@@ -143,9 +143,8 @@ const LandingPage = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`banner-slide w-full transition-all duration-1000 ${
-              activeSlide === index ? "opacity-100 relative block translate-y-0" : "opacity-0 absolute inset-0 hidden translate-y-10"
-            }`}
+            className={`banner-slide w-full transition-all duration-1000 ${activeSlide === index ? "opacity-100 relative block translate-y-0" : "opacity-0 absolute inset-0 hidden translate-y-10"
+              }`}
           >
             <section className="banner-area section-padding">
               <div className="container">
@@ -159,14 +158,14 @@ const LandingPage = () => {
                           Kona Signature Bowls
                         </span>
                       </div>
-                      
+
                       <h1 className="font-playfair font-extrabold leading-tight tracking-wide text-black" style={{ fontSize: "52px" }}>
                         {slide.title}
                       </h1>
                       <p className="mt-15 mb-30 text-[#666] font-light leading-relaxed" style={{ fontSize: "16px", maxWidth: "480px" }}>
                         {slide.description}
                       </p>
-                      
+
                       <div className="pt-10">
                         <Link to={`/product/${slide.productId}`} className="bttn-mid btn-fill">
                           Order now &nbsp; &rarr;
@@ -180,7 +179,7 @@ const LandingPage = () => {
                     <div className="banner relative group">
                       {/* Decorative backdrop circle */}
                       <div className="absolute -inset-4 bg-[#FFA259]/10 rounded-full blur pointer-events-none"></div>
-                      
+
                       <img
                         src={slide.image}
                         alt={slide.title}
@@ -201,9 +200,8 @@ const LandingPage = () => {
             <button
               key={i}
               onClick={() => setActiveSlide(i)}
-              className={`w-3.5 h-3.5 rounded-full border-2 border-white transition-all ${
-                activeSlide === i ? "bg-[#FFA259] scale-125 px-15" : "bg-gray-300"
-              }`}
+              className={`w-3.5 h-3.5 rounded-full border-2 border-white transition-all ${activeSlide === i ? "bg-[#FFA259] scale-125 px-15" : "bg-gray-300"
+                }`}
               style={{ borderRadius: "20px" }}
             ></button>
           ))}
@@ -309,8 +307,8 @@ const LandingPage = () => {
             pagination={{ clickable: true }}
             loop={true}
             breakpoints={{
-              640:  { slidesPerView: 2, spaceBetween: 20 },
-              768:  { slidesPerView: 3, spaceBetween: 24 },
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              768: { slidesPerView: 3, spaceBetween: 24 },
               1024: { slidesPerView: 4, spaceBetween: 24 },
             }}
             style={{ paddingBottom: "48px", paddingLeft: "4px", paddingRight: "4px" }}
@@ -350,8 +348,8 @@ const LandingPage = () => {
       </section>
 
       {/* 3. KONA REVIVES YOU (Floating Card layout with top/bottom margin) */}
-      <section 
-        className="relative overflow-hidden my-16 md:my-24 mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] shadow-md border border-[#FFA259]/10" 
+      <section
+        className="relative overflow-hidden my-16 md:my-24 mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] shadow-md border border-[#FFA259]/10"
         style={{ backgroundColor: "#FAF2EC", height: "auto", minHeight: "auto" }}
       >
         {/* Floating background decorative leaves */}
@@ -376,12 +374,12 @@ const LandingPage = () => {
                 <span className="text-[10px] uppercase tracking-[0.25em] text-[#E15C6C] font-extrabold bg-[#E15C6C]/10 px-4 py-2 rounded-full inline-block">
                   Signature Boba & Smoothies
                 </span>
-                
+
                 <h3 className="cl-pink font-playfair font-extrabold leading-tight mb-15" style={{ fontSize: "40px" }}>
                   Kona Revives You
                 </h3>
                 <div className="h-1.5 w-16 bg-[#E15C6C] rounded mb-20"></div>
-                
+
                 <p style={{ color: "#555", fontSize: "16px", lineHeight: "1.9em" }} className="font-light mb-20">
                   Twitch your day with our freshly blended juice or smoothie. Sweet, tangy and fresh, our juice will
                   give you a lift.
@@ -432,7 +430,7 @@ const LandingPage = () => {
               <div className="relative inline-block group">
                 {/* Glow backdrop circle */}
                 <div className="absolute -inset-4 bg-gradient-to-tr from-[#E15C6C]/20 to-[#FF8A9A]/10 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 {/* Image */}
                 <img
                   src="/assets/images/about-2.png"
@@ -645,29 +643,36 @@ const LandingPage = () => {
       </section>
 
       {/* 3.8. WHY CHOOSE US */}
-      <section className="py-24 bg-white relative overflow-hidden" id="why-us">
+      <section className="py-24 bg-[#FAFAFA] relative overflow-hidden" id="why-us">
         <div className="container">
-          <div className="row items-center gap-y-12">
+          <div className="row items-center gap-y-16">
 
-            {/* LEFT: Two stacked overlapping images */}
-            <div className="col-lg-5 col-md-6 flex justify-center mb-40 mb-md-0">
-              <div className="relative" style={{ width: "360px", height: "420px" }}>
-                {/* Back image (left, taller) */}
+            {/* LEFT: Elevated overlapping images (অর্ধেক জায়গা নেবে: col-lg-6) */}
+            <div className="col-lg-6 col-md-6 flex justify-center mb-12 md:mb-0">
+              {/* কন্টেইনারের width 480px থেকে বাড়িয়ে 560px এবং height 600px করা হয়েছে */}
+              <div className="relative group cursor-pointer max-w-full" style={{ width: "560px", height: "600px" }}>
+
+                {/* Decorative background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00A186] rounded-full mix-blend-multiply filter blur-3xl opacity-10 transition-opacity duration-500 group-hover:opacity-20" />
+
+                {/* Back image (left, taller) - Width 280px থেকে 340px করা হয়েছে */}
                 <div
-                  className="absolute left-0 top-0 rounded-[28px] overflow-hidden shadow-lg"
-                  style={{ width: "190px", height: "380px" }}
+                  className="absolute left-0 top-0 rounded-[2rem] overflow-hidden shadow-lg transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl"
+                  style={{ width: "340px", height: "520px" }}
                 >
                   <img
                     src="/assets/images/gallery-3.png"
                     alt="Kona Cafe ambiance"
                     className="w-full h-full object-cover"
                   />
+                  {/* Subtle dark overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Front image (right, overlapping) */}
+                {/* Front image (right, overlapping) - Width 300px থেকে 380px করা হয়েছে */}
                 <div
-                  className="absolute right-0 bottom-0 rounded-[28px] overflow-hidden shadow-xl border-4 border-white"
-                  style={{ width: "210px", height: "340px" }}
+                  className="absolute right-0 bottom-0 rounded-[2rem] overflow-hidden shadow-xl border-[8px] border-[#FAFAFA] transition-transform duration-500 group-hover:translate-y-2 group-hover:shadow-2xl z-10"
+                  style={{ width: "380px", height: "460px" }}
                 >
                   <img
                     src="/assets/images/about-4.png"
@@ -676,47 +681,46 @@ const LandingPage = () => {
                   />
                 </div>
 
-                {/* Floating badge */}
+                {/* Floating badge - Glassmorphism style */}
                 <div
-                  className="absolute -bottom-4 left-6 bg-white rounded-2xl px-5 py-3 shadow-xl flex items-center gap-3 z-20 border border-gray-50"
-                  style={{ minWidth: "160px" }}
+                  className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md rounded-2xl px-6 py-4 shadow-xl flex items-center gap-4 z-20 border border-white/50 transition-all duration-300 hover:scale-105"
+                  style={{ minWidth: "200px" }}
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#00A186]/10 flex items-center justify-center text-[#00A186] font-bold text-sm shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00A186] to-[#00C9B7] flex items-center justify-center text-white font-bold text-xl shrink-0 shadow-md shadow-[#00A186]/30">
                     ✓
                   </div>
                   <div>
-                    <p className="text-[9px] uppercase tracking-wider text-gray-400 font-bold m-0">Since 2019</p>
-                    <p className="text-xs font-bold text-gray-900 m-0">Award Winner</p>
+                    <p className="text-[11px] uppercase tracking-widest text-[#00A186] font-extrabold m-0 mb-0.5">Since 2019</p>
+                    <p className="text-base font-bold text-gray-900 m-0">Award Winner</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT: Text + checklist */}
-            <div className="col-lg-7 col-md-6 pl-xl-50">
-              <div className="space-y-6">
-                {/* Label */}
-                <span
-                  className="font-playfair italic font-bold text-xl"
-                  style={{ color: "#00A186" }}
-                >
-                  Kona Cafe
-                </span>
+            {/* RIGHT: Text + Interactive checklist */}
+            <div className="col-lg-6 col-md-6 lg:pl-16">
+              <div className="space-y-7">
 
-                {/* Heading */}
-                <h2
-                  className="font-playfair font-extrabold text-[#1a1a1a] leading-tight mt-2"
-                  style={{ fontSize: "40px" }}
-                >
-                  Why Choose Kona Cafe?
-                </h2>
+                {/* Headers */}
+                <div>
+                  <span className="font-playfair italic font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A186] to-[#00C9B7]">
+                    The Kona Cafe Experience
+                  </span>
 
-                <p className="text-gray-500 font-light text-sm leading-relaxed" style={{ maxWidth: "500px" }}>
-                  We bring authentic Hawaiian and Korean flavors to Dhaka with the finest fresh ingredients, prepared daily for a wholesome experience you'll love.
-                </p>
+                  <h2
+                    className="font-playfair font-extrabold text-[#1a1a1a] leading-tight mt-3 mb-4"
+                    style={{ fontSize: "clamp(32px, 4vw, 44px)" }}
+                  >
+                    Why Choose Us?
+                  </h2>
+
+                  <p className="text-gray-500 font-light text-base leading-relaxed max-w-lg">
+                    We bring authentic Hawaiian and Korean flavors to Dhaka with the finest fresh ingredients, prepared daily for a wholesome experience you'll love.
+                  </p>
+                </div>
 
                 {/* Checklist */}
-                <div className="flex flex-col gap-6 pt-4">
+                <div className="flex flex-col gap-5 pt-2">
                   {[
                     {
                       title: "100% Fresh Ingredients",
@@ -735,41 +739,51 @@ const LandingPage = () => {
                       desc: "Low-calorie, high-protein bowls with vegan, gluten-free, and dairy-free choices, crafted by our in-house nutritionist."
                     }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 group">
-                      {/* Checkmark */}
+                    <div key={i} className="flex items-start gap-4 group p-3 -ml-3 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 cursor-default">
+                      {/* Checkmark with glow on hover */}
                       <div
-                        className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                        className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm shadow-[#FFA259]/20 group-hover:shadow-md group-hover:shadow-[#FFA259]/40"
                         style={{ backgroundColor: "#FFA259" }}
                       >
                         <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                          <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
                       <div>
-                        <h5 className="font-bold text-gray-900 text-base mb-1">{item.title}</h5>
-                        <p className="text-sm text-gray-400 font-light leading-relaxed m-0">{item.desc}</p>
+                        <h5 className="font-bold text-gray-800 text-base mb-1.5 transition-colors duration-300 group-hover:text-[#00A186]">
+                          {item.title}
+                        </h5>
+                        <p className="text-sm text-gray-500 font-light leading-relaxed m-0 group-hover:text-gray-600">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* CTA */}
-                <div className="pt-6">
+                <div className="pt-4">
                   <Link
                     to="/menu"
-                    className="bttn-mid btn-fill"
+                    className="group inline-flex items-center justify-center rounded-full px-8 py-3.5 text-white font-bold transition-all duration-300 hover:-translate-y-1"
                     style={{
                       background: "linear-gradient(135deg, #00A186 0%, #00C9B7 100%)",
-                      boxShadow: "0 8px 20px rgba(0, 161, 134, 0.25)"
+                      boxShadow: "0 10px 25px -5px rgba(0, 161, 134, 0.4)"
                     }}
                   >
-                    Explore Our Menu &nbsp; →
+                    Explore Our Menu
+                    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1.5">
+                      →
+                    </span>
                   </Link>
                 </div>
-              </div>
-            </div>
 
-            {/* 3.9. CUSTOMER REVIEWS — Arc Photo Testimonial */}
+              </div> {/* Closes .space-y-7 */}
+            </div> {/* Closes .col-lg-6 */}
+          </div> {/* Closes .row */}
+        </div> {/* Closes .container */}
+      </section>
+      {/* 3.9. CUSTOMER REVIEWS — Arc Photo Testimonial */}
       <section className="py-24 bg-white relative overflow-hidden" id="reviews">
         {/* Subtle bg decoration */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
@@ -778,135 +792,148 @@ const LandingPage = () => {
         </div>
 
         <div className="container relative z-10">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="font-playfair font-extrabold text-[#1a1a1a] leading-tight" style={{ fontSize: "clamp(28px, 4vw, 42px)" }}>
-              What Clients Say<br />About Our Coffee
-            </h2>
-          </div>
+          {/* Wrapper: padding-top বাড়ানো হয়েছে যাতে হেডিংয়ের জন্য পর্যাপ্ত জায়গা থাকে */}
+          <div className="relative w-full pt-20 mt-4">
 
-          {/* Arc Photos */}
-          {(() => {
-            const clients = [
-              {
-                name: "Anika Rahman",
-                photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=300&fit=crop&crop=face",
-                text: "I've tried many different types of coffee over the years, but this particular brand has truly captivated my senses. From the moment I opened the bag, the aroma was unlike anything I'd experienced before!"
-              },
-              {
-                name: "Fatima Khan",
-                photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
-                text: "The Lychee Rose Boba Tea is absolutely divine — floral, sweet, and perfectly balanced. I come here every weekend just for that drink alone. The vibe and ambiance is amazing too!"
-              },
-              {
-                name: "Sarah Thompson",
-                photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face",
-                text: "I've tried many different types of coffee over the years, but this particular brand has truly captivated my senses. From the moment I opened the bag, the rich aroma was unlike anything I'd experienced before!"
-              },
-              {
-                name: "James Lee",
-                photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-                text: "The Korean Bibimbap Bowl is authentic and incredibly fresh. It reminds me of eating in Seoul — every ingredient is perfectly seasoned and balanced. Absolutely the best in Dhaka!"
-              },
-              {
-                name: "Marcus Chen",
-                photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
-                text: "Kona Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
-              }
-            ];
-            const total = clients.length;
-            const prev = () => setActiveReview((p) => (p - 1 + total) % total);
-            const next = () => setActiveReview((p) => (p + 1) % total);
+            {/* Header — হেডিংটিকে আগের চেয়ে ওপরে (-top-4) সেট করা হয়েছে এবং মাঝখানে ফিক্সড রাখা হয়েছে */}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-full max-w-lg mx-auto text-center z-0 pointer-events-none px-4">
+              {/* Decorative Coffee Beans */}
+              <div className="absolute -top-10 left-0 md:-left-8 opacity-80 hidden sm:block">
+                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round">
+                  <path d="M25,45 C15,35 25,15 40,25 C45,30 40,50 25,45 Z" />
+                  <path d="M22,33 C28,30 32,38 38,35" strokeDasharray="2 2" />
+                  <path d="M50,25 C42,18 52,5 62,12 C66,16 62,30 50,25 Z" />
+                  <path d="M48,16 C53,14 56,20 60,18" strokeDasharray="2 2" />
+                </svg>
+              </div>
 
-            // Arc: center = biggest + lowest. Sides = smaller + higher (negative translateY)
-            const arcConfigs = [
-              { size: 210, translateY:   0, opacity: 1,    zIndex: 10, shadow: "0 20px 60px rgba(0,0,0,0.20)" }, // center
-              { size: 148, translateY: -50, opacity: 0.90, zIndex: 8,  shadow: "0 8px 24px rgba(0,0,0,0.12)"  }, // ±1
-              { size: 100, translateY: -90, opacity: 0.65, zIndex: 6,  shadow: "0 4px 12px rgba(0,0,0,0.08)"  }, // ±2
-            ];
+              {/* Subtitle Label */}
+              <span
+                className="block font-medium text-lg mb-2"
+                style={{ color: "#00A186", fontFamily: "cursive, sans-serif" }}
+              >
+                Testimonials
+              </span>
 
-            const getConfig = (idx) => {
-              const dist = Math.abs(idx - activeReview);
-              const d = Math.min(dist, total - dist);
-              return arcConfigs[Math.min(d, arcConfigs.length - 1)];
-            };
+              {/* Main Heading */}
+              <h2 className="font-sans font-extrabold text-[#1a1a1a] tracking-tight leading-tight m-0" style={{ fontSize: "clamp(28px, 4vw, 42px)" }}>
+                What Clients Say<br />About Our Coffee
+              </h2>
+            </div>
 
-            return (
-              <>
-                {/* Photos arc — center lowest, sides rise up */}
-                <div
-                  className="flex items-end justify-center mb-10"
-                  style={{ gap: "20px", minHeight: "240px", overflow: "visible" }}
-                >
-                  {clients.map((client, idx) => {
-                    const cfg = getConfig(idx);
-                    return (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveReview(idx)}
-                        className="relative rounded-full overflow-hidden shrink-0 focus:outline-none cursor-pointer"
-                        style={{
-                          width:     `${cfg.size}px`,
-                          height:    `${cfg.size}px`,
-                          minWidth:  `${cfg.size}px`,
-                          opacity:   cfg.opacity,
-                          zIndex:    cfg.zIndex,
-                          transform: `translateY(${cfg.translateY}px)`,
-                          boxShadow: cfg.shadow,
-                          border:    "3px solid #fff",
-                          transition: "all 0.5s cubic-bezier(0.4,0,0.2,1)",
-                        }}
-                      >
-                        <img
-                          src={client.photo}
-                          alt={client.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
+            {/* Arc Photos Carousel Component */}
+            {(() => {
+              const clients = [
+                {
+                  name: "Anika Rahman",
+                  photo: "https://i.ibb.co.com/v3kFpzP/person-2.jpg",
+                  text: "I've tried many different types of coffee over the years, but this particular brand has truly captivated my senses. From the moment I opened the bag, the aroma was unlike anything I'd experienced before!"
+                },
+                {
+                  name: "Fatima Khan",
+                  photo: "https://i.ibb.co.com/YkPLB5S/pexels-andrewpersonaltraining-733500.jpg",
+                  text: "The Lychee Rose Boba Tea is absolutely divine — floral, sweet, and perfectly balanced. I come here every weekend just for that drink alone. The vibe and ambiance is amazing too!"
+                },
+                {
+                  name: "Sarah Thompson",
+                  photo: "https://i.ibb.co.com/C9wCwvc/person-1.jpg",
+                  text: "I've tried many different types of coffee over the years, but this particular brand has truly captivated my senses. From the moment I opened the bag, the rich aroma was unlike anything I'd experienced before!"
+                },
+                {
+                  name: "James Lee",
+                  photo: "https://i.ibb.co.com/r3LbDdn/pexels-hannah-nelson-390257-1065084.jpg",
+                  text: "The Korean Bibimbap Bowl is authentic and incredibly fresh. It reminds me of eating in Seoul — every ingredient is perfectly seasoned and balanced. Absolutely the best in Dhaka!"
+                },
+                {
+                  name: "Marcus Chen",
+                  photo: "https://i.ibb.co.com/D7m5m7x/person-6.jpg",
+                  text: "Kona Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
+                }
+              ];
+              const total = clients.length;
+              const prev = () => setActiveReview((p) => (p - 1 + total) % total);
+              const next = () => setActiveReview((p) => (p + 1) % total);
 
-                {/* Name + review text */}
-                <div className="text-center max-w-md mx-auto">
-                  <p className="font-bold text-[#1a1a1a] mb-3" style={{ fontSize: "16px" }}>
-                    {clients[activeReview].name}
-                  </p>
-                  <p className="text-gray-500 font-light leading-relaxed" style={{ fontSize: "14px" }}>
-                    {clients[activeReview].text}
-                  </p>
+              // কার্ভের ভ্যালু সামান্য কমানো হয়েছে যেন হেডিংয়ের সাথে ওভারল্যাপ না হয়
+              const arcConfigs = [
+                { size: 220, translateY: 0, opacity: 1, zIndex: 10, shadow: "0 20px 40px rgba(0,0,0,0.12)" }, // Center
+                { size: 140, translateY: -90, opacity: 0.90, zIndex: 8, shadow: "0 10px 25px rgba(0,0,0,0.08)" }, // Inner Sides
+                { size: 90, translateY: -180, opacity: 0.70, zIndex: 6, shadow: "0 5px 15px rgba(0,0,0,0.05)" },  // Outer Edges (Starts at heading level)
+              ];
 
-                  {/* ← → Arrows — teal outline matching screenshot */}
-                  <div className="flex justify-center items-center gap-5 mt-8">
-                    <button
-                      onClick={prev}
-                      className="flex items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95"
-                      style={{
-                        width: "40px", height: "40px",
-                        border: "2px solid #00A186",
-                        color: "#00A186",
-                        background: "transparent",
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                      }}
-                    >←</button>
-                    <button
-                      onClick={next}
-                      className="flex items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95"
-                      style={{
-                        width: "40px", height: "40px",
-                        border: "2px solid #00A186",
-                        color: "#00A186",
-                        background: "transparent",
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                      }}
-                    >→</button>
+              const getConfig = (idx) => {
+                const dist = Math.abs(idx - activeReview);
+                const d = Math.min(dist, total - dist);
+                return arcConfigs[Math.min(d, arcConfigs.length - 1)];
+              };
+
+              return (
+                <>
+                  {/* Photos arc — Container height adjusted */}
+                  <div
+                    className="flex items-end justify-center mb-10 relative z-10 pointer-events-auto"
+                    style={{ gap: "clamp(1.5rem, 4vw, 4.5rem)", minHeight: "300px", overflow: "visible" }}
+                  >
+                    {clients.map((client, idx) => {
+                      const cfg = getConfig(idx);
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => setActiveReview(idx)}
+                          className="relative rounded-full overflow-hidden shrink-0 focus:outline-none cursor-pointer"
+                          style={{
+                            width: `${cfg.size}px`,
+                            height: `${cfg.size}px`,
+                            minWidth: `${cfg.size}px`,
+                            opacity: cfg.opacity,
+                            zIndex: cfg.zIndex,
+                            transform: `translateY(${cfg.translateY}px)`,
+                            boxShadow: cfg.shadow,
+                            border: "4px solid #fff",
+                            transition: "all 0.6s cubic-bezier(0.25, 1, 0.5, 1)",
+                          }}
+                        >
+                          <img
+                            src={client.photo}
+                            alt={client.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      );
+                    })}
                   </div>
-                </div>
-              </>
-            );
-          })()}
+
+                  {/* Active review text content */}
+                  <div className="text-center max-w-2xl mx-auto px-4 mt-2">
+                    <h4 className="font-bold text-[#1a1a1a] text-lg tracking-wide mb-3">
+                      {clients[activeReview].name}
+                    </h4>
+                    <p className="text-gray-400 font-normal leading-relaxed text-sm max-w-xl mx-auto">
+                      {clients[activeReview].text}
+                    </p>
+
+                    {/* ← → Controls */}
+                    <div className="flex justify-center items-center gap-8 mt-8">
+                      <button
+                        onClick={prev}
+                        className="p-1 transition-transform hover:scale-125 active:scale-90 border-0 bg-transparent cursor-pointer flex items-center justify-center"
+                        style={{ color: "#00A186", fontSize: "28px", fontWeight: "light", width: "40px", height: "40px" }}
+                      >
+                        ←
+                      </button>
+                      <button
+                        onClick={next}
+                        className="p-1 transition-transform hover:scale-125 active:scale-90 border-0 bg-transparent cursor-pointer flex items-center justify-center"
+                        style={{ color: "#00A186", fontSize: "28px", fontWeight: "light", width: "40px", height: "40px" }}
+                      >
+                        →
+                      </button>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
         </div>
       </section>
 
@@ -978,8 +1005,8 @@ const LandingPage = () => {
       </section>
 
       {/* 4. FIND OUR SHACKS (Highly Interactive Branch Selector Layout) */}
-      <section 
-        className="banner-area section-padding bg-white text-left relative overflow-hidden" 
+      <section
+        className="banner-area section-padding bg-white text-left relative overflow-hidden"
         id="location"
         style={{ height: "auto", minHeight: "auto" }}
       >
@@ -1025,9 +1052,9 @@ const LandingPage = () => {
                       }}
                     >
                       <div>
-                        <h5 
+                        <h5
                           className="font-bold mb-1 transition-colors duration-300"
-                          style={{ 
+                          style={{
                             fontSize: "16px",
                             color: isActive ? shack.color : "#1a1a1a"
                           }}
@@ -1036,7 +1063,7 @@ const LandingPage = () => {
                         </h5>
                         <span className="text-xs text-muted font-light">{shack.address.split(", ")[2]}</span>
                       </div>
-                      <span 
+                      <span
                         className="h-8 w-8 rounded-full flex items-center justify-center transition-all duration-300"
                         style={{
                           backgroundColor: isActive ? shack.color : "rgba(0,0,0,0.03)",
@@ -1050,7 +1077,7 @@ const LandingPage = () => {
                 })}
               </div>
             </div>
-            
+
             {/* Right Column: Active branch detailed spotlight card */}
             <div className="col-lg-7 flex items-center">
               <div className="bg-white rounded-[32px] p-6 md:p-8 border border-gray-100 shadow-xl flex flex-col md:flex-row gap-6 items-center w-full min-h-[320px] animate-fade-in">
@@ -1061,7 +1088,7 @@ const LandingPage = () => {
                     alt={shacks[activeShack].name}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
-                  <span 
+                  <span
                     className="absolute top-3 left-3 text-[9px] font-bold text-white px-3 py-1 rounded-full uppercase tracking-wider shadow-md"
                     style={{ backgroundColor: shacks[activeShack].color }}
                   >
@@ -1075,7 +1102,7 @@ const LandingPage = () => {
                     {shacks[activeShack].name}
                   </h3>
                   <div className="h-1 w-12 rounded" style={{ backgroundColor: shacks[activeShack].color }}></div>
-                  
+
                   <div className="space-y-3 text-sm font-light text-muted-600">
                     <p className="flex items-start gap-2 m-0">
                       <i className="fa fa-map-marker mt-1 text-[#E15C6C] shrink-0 w-4 text-center"></i>
@@ -1095,7 +1122,7 @@ const LandingPage = () => {
                     <a
                       href={`tel:${shacks[activeShack].hotline}`}
                       className="bttn-small btn-fill text-xs"
-                      style={{ 
+                      style={{
                         background: shacks[activeShack].color,
                         boxShadow: `0 8px 15px ${shacks[activeShack].color}25`
                       }}
