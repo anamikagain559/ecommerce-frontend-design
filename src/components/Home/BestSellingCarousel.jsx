@@ -1,34 +1,18 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { products } from "../../mockData";
+import { products } from "../mockData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const BestSellingCarousel = () => {
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
   return (
     <section className="py-16 bg-[#F8F8F8] relative" id="best-selling">
       <style>{`
-        #best-selling .swiper-button-next,
-        #best-selling .swiper-button-prev {
-          width: 44px;
-          height: 44px;
-          background: #fff;
-          border-radius: 50%;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-          border: 1px solid #f0f0f0;
-          color: #555;
-        }
-        #best-selling .swiper-button-next::after,
-        #best-selling .swiper-button-prev::after {
-          font-size: 14px;
-          font-weight: 900;
-        }
-        #best-selling .swiper-button-next:hover,
-        #best-selling .swiper-button-prev:hover {
-          background: #FFA259;
-          color: #fff;
-          border-color: #FFA259;
-        }
         #best-selling .swiper-pagination-bullet {
           background: #ccc;
           opacity: 1;
@@ -37,6 +21,12 @@ const BestSellingCarousel = () => {
           background: #FFA259;
           width: 24px;
           border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        /* Hide the default Swiper nav arrows */
+        #best-selling .swiper-button-next,
+        #best-selling .swiper-button-prev {
+          display: none !important;
         }
       `}</style>
 
@@ -49,12 +39,36 @@ const BestSellingCarousel = () => {
             </h2>
             <div className="h-[3px] w-14 bg-[#FFA259] mt-2 rounded"></div>
           </div>
-          <Link
-            to="/menu"
-            className="text-sm font-bold uppercase tracking-wider text-[#888] hover:text-[#FFA259] transition-colors"
-          >
-            View All
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link
+              to="/menu"
+              className="text-sm font-bold uppercase tracking-wider text-[#888] hover:text-[#FFA259] transition-colors hidden md:block"
+            >
+              View All
+            </Link>
+
+            {/* Custom Navigation Arrows */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => swiperInstance?.slidePrev()}
+                className="h-11 w-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#FFA259] hover:text-white hover:border-[#FFA259] transition-all duration-300 shadow-sm cursor-pointer"
+                aria-label="Previous slide"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <button
+                onClick={() => swiperInstance?.slideNext()}
+                className="h-11 w-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#FFA259] hover:text-white hover:border-[#FFA259] transition-all duration-300 shadow-sm cursor-pointer"
+                aria-label="Next slide"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Swiper Slider */}
@@ -63,7 +77,7 @@ const BestSellingCarousel = () => {
           spaceBetween={24}
           slidesPerView={1}
           centeredSlides={false}
-          navigation
+          onSwiper={(swiper) => setSwiperInstance(swiper)}
           pagination={{ clickable: true }}
           loop={true}
           breakpoints={{
@@ -77,28 +91,33 @@ const BestSellingCarousel = () => {
             .filter((product) => product.id >= 61 && product.id <= 68)
             .map((product) => (
               <SwiperSlide key={product.id}>
-                <div className="bg-white border border-gray-100 rounded-[28px] shadow-sm hover:shadow-lg transition-all duration-300 p-6 flex flex-col items-center justify-between text-center h-full">
-                  {/* Food Image Circle */}
-                  <Link
-                    to={`/product/${product.id}`}
-                    className="w-36 h-36 rounded-full overflow-hidden bg-gray-50 flex items-center justify-center p-2 mb-4 shadow-inner relative group/img"
-                    style={{ display: "flex" }}
-                  >
+                <div className="bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-400 hover:-translate-y-1 group flex flex-col h-full">
+                  <Link to={`/product/${product.id}`} className="block relative h-56 w-full overflow-hidden">
                     <img
                       src={`/erp/images/${product.photo}`}
                       alt={product.name}
-                      className="w-[90%] h-[90%] object-cover rounded-full transition-transform duration-500 group-hover/img:scale-110"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
+                    <span className="absolute top-3 left-3 bg-[#E15C6C] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">
+                      Best Seller
+                    </span>
                   </Link>
-
-                  {/* Title & Price */}
-                  <div className="flex flex-col flex-grow w-full justify-between">
-                    <h4 className="font-playfair font-bold text-gray-900 mb-2 text-base line-clamp-2 min-h-[46px] hover:text-[#FFA259] transition-colors leading-snug">
+                  <div className="p-5 flex flex-col flex-grow text-left">
+                    <h4 className="font-playfair font-bold text-gray-900 text-base mb-1 line-clamp-1 group-hover:text-[#FFA259] transition-colors">
                       <Link to={`/product/${product.id}`}>{product.name}</Link>
                     </h4>
-                    <p className="text-[#FFA259] font-bold text-xl mt-auto m-0">
-                      ৳{product.price}
+                    <p className="text-xs text-gray-400 mb-4 line-clamp-2 font-light leading-relaxed flex-grow">
+                      {product.description || "Fresh and delicious signature bowl."}
                     </p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <span className="text-[#FFA259] font-extrabold text-xl">৳{product.price}</span>
+                      <Link
+                        to={`/product/${product.id}`}
+                        className="h-9 w-9 rounded-full bg-[#FFA259] text-white flex items-center justify-center hover:bg-[#FF8C3A] transition-colors shadow-sm text-sm"
+                      >
+                        <i className="fa fa-plus"></i>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

@@ -3,20 +3,20 @@ import { Link, useSearchParams } from "react-router-dom";
 import { categories, products } from "./mockData";
 
 const categoryMeta = {
-  "all":            { icon: "🍽️", accent: "#FFA259", bg: "from-[#FFA259]/20 to-[#FF6B6B]/10" },
-  "poke-bowls":     { icon: "🥗", accent: "#00A186", bg: "from-[#00A186]/20 to-[#00C9B7]/10" },
-  "bibimbap":       { icon: "🍚", accent: "#E15C6C", bg: "from-[#E15C6C]/20 to-[#FF8A9A]/10" },
-  "fries-hotdogs":  { icon: "🌭", accent: "#FFA259", bg: "from-[#FFA259]/20 to-[#FF6B6B]/10" },
-  "juice-smoothies":{ icon: "🧃", accent: "#1494C3", bg: "from-[#1494C3]/20 to-[#00C9B7]/10" },
-  "drinks-coffee":  { icon: "☕", accent: "#8B5E3C", bg: "from-[#8B5E3C]/20 to-[#C49A6C]/10" },
+  "all": { icon: "🍽️", accent: "#FFA259", bg: "from-[#FFA259]/20 to-[#FF6B6B]/10" },
+  "poke-bowls": { icon: "🥗", accent: "#00A186", bg: "from-[#00A186]/20 to-[#00C9B7]/10" },
+  "bibimbap": { icon: "🍚", accent: "#E15C6C", bg: "from-[#E15C6C]/20 to-[#FF8A9A]/10" },
+  "fries-hotdogs": { icon: "🌭", accent: "#FFA259", bg: "from-[#FFA259]/20 to-[#FF6B6B]/10" },
+  "juice-smoothies": { icon: "🧃", accent: "#1494C3", bg: "from-[#1494C3]/20 to-[#00C9B7]/10" },
+  "drinks-coffee": { icon: "☕", accent: "#8B5E3C", bg: "from-[#8B5E3C]/20 to-[#C49A6C]/10" },
 };
 
 const getBadgeColor = (category) => ({
-  "poke-bowls":      "#00A186",
-  "bibimbap":        "#E15C6C",
-  "fries-hotdogs":   "#FFA259",
+  "poke-bowls": "#00A186",
+  "bibimbap": "#E15C6C",
+  "fries-hotdogs": "#FFA259",
   "juice-smoothies": "#1494C3",
-  "drinks-coffee":   "#8B5E3C",
+  "drinks-coffee": "#8B5E3C",
 }[category] || "#FFA259");
 
 const MenuPage = () => {
@@ -24,9 +24,9 @@ const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(
     searchParams.get("category") || "all"
   );
-  const [searchQuery, setSearchQuery]   = useState("");
-  const [sortBy, setSortBy]             = useState("default");
-  const [animating, setAnimating]       = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("default");
+  const [animating, setAnimating] = useState(false);
 
   // Update category when URL param changes
   useEffect(() => {
@@ -43,15 +43,15 @@ const MenuPage = () => {
   };
 
   let filteredProducts = products.filter((p) => {
-    const matchesCat    = selectedCategory === "all" || p.category === selectedCategory;
+    const matchesCat = selectedCategory === "all" || p.category === selectedCategory;
     const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          p.description.toLowerCase().includes(searchQuery.toLowerCase());
+      p.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesSearch;
   });
 
-  if (sortBy === "price-asc")  filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
+  if (sortBy === "price-asc") filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
   if (sortBy === "price-desc") filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
-  if (sortBy === "name")       filteredProducts = [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
+  if (sortBy === "name") filteredProducts = [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
 
   const activeMeta = categoryMeta[selectedCategory] || categoryMeta["all"];
 
@@ -70,7 +70,7 @@ const MenuPage = () => {
 
         <div className="container relative z-10 text-center">
           <span className="inline-block text-[10px] uppercase tracking-[0.3em] font-extrabold bg-[#FFA259]/15 text-[#FFA259] border border-[#FFA259]/30 px-5 py-2 rounded-full mb-5">
-            Kona Cafe Kitchen
+            Cove Cafe Kitchen
           </span>
           <h1 className="font-playfair font-extrabold text-white leading-tight mb-4"
             style={{ fontSize: "clamp(32px, 5vw, 54px)" }}>
@@ -105,7 +105,7 @@ const MenuPage = () => {
         <div className="container">
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-4 px-2">
             {categories.map((cat) => {
-              const meta    = categoryMeta[cat.id] || categoryMeta["all"];
+              const meta = categoryMeta[cat.id] || categoryMeta["all"];
               const isActive = selectedCategory === cat.id;
               return (
                 <button

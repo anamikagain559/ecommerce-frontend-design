@@ -57,7 +57,7 @@ const HeroSlider = () => {
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#FFA259]/20 rounded-full bg-white mb-10 shadow-sm">
                       <span className="h-2.5 w-2.5 rounded-full bg-[#FFA259] animate-ping"></span>
                       <span className="text-[10px] uppercase tracking-widest text-[#FFA259] font-bold">
-                        Kona Signature Bowls
+                        Cove Signature Bowls
                       </span>
                     </div>
 

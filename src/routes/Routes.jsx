@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layouts/Root";
-import LandingPage from "../components/LandingPage/LandingPage";
+import Home from "../components/Home/Home";
 import AboutPage from "../components/AboutPage";
 import MenuPage from "../components/MenuPage";
 import EventsPage from "../components/EventsPage";
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <LandingPage />,
+        element: <Home />,
       },
       {
         path: "/about",

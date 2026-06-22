@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { products } from "../../mockData";
+import { products } from "../mockData";
 
 const CategoryShowcase = () => {
   return (
     <>
-      {/* 3. KONA REVIVES YOU (Floating Card layout with top/bottom margin) */}
+      {/* 3. Cove REVIVES YOU (Floating Card layout with top/bottom margin) */}
       <section
         className="relative overflow-hidden my-16 md:my-24 mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] shadow-md border border-[#FFA259]/10"
         style={{ backgroundColor: "#FAF2EC", height: "auto", minHeight: "auto" }}
@@ -34,7 +34,7 @@ const CategoryShowcase = () => {
                 </span>
 
                 <h3 className="cl-pink font-playfair font-extrabold leading-tight mb-15" style={{ fontSize: "40px" }}>
-                  Kona Revives You
+                  Cove Revives You
                 </h3>
                 <div className="h-1.5 w-16 bg-[#E15C6C] rounded mb-20"></div>
 
@@ -91,10 +91,10 @@ const CategoryShowcase = () => {
 
                 {/* Image */}
                 <img
-                  src="/assets/images/about-2.png"
-                  alt="Kona Refreshing Drinks"
+                  src="https://i.ibb.co.com/1qssVVw/images-2.jpg"
+                  alt="Cove Refreshing Boba & Smoothie Drinks"
                   className="img-fluid relative z-10 rounded-[32px] transition-all duration-700 group-hover:scale-105"
-                  style={{ maxHeight: "380px", objectFit: "cover", filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.08))" }}
+                  style={{ maxHeight: "420px", width: "360px", objectFit: "cover", filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.08))" }}
                 />
 
                 {/* Floating Boba Label */}

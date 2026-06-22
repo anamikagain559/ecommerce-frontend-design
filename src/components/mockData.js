@@ -246,9 +246,9 @@ export const events = [
     id: 1,
     title: "Aloha Friday Nights",
     date: "Every Friday, 7 PM - 11 PM",
-    location: "Lakeshore Hotel Patio",
+    location: "kyline Rooftop Lounge",
     description: "Join us for authentic Hawaiian slack-key guitar performances, complimentary tropical welcome punches, and a special custom Poke Bowl menu featuring exclusive imports.",
-    image: "/assets/images/gallery-1.png"
+    image: "https://images.unsplash.com/photo-1485686531765-ba63b07845a7?q=80&w=800"
   },
   {
     id: 2,
