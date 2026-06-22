@@ -1,6 +1,6 @@
 # Cove Cafe &mdash; Hawaiian Inspired Cuisines E-Commerce
 
-A modern, responsive, and fully operational React.js e-commerce application cloned from the design and layout of the original PHP-based **Cove Cafe** website (located at `H:\Dell PC\drawhouse pc`). Built using Vite, React Router, and the original CSS/assets of the reference site, ensuring a pixel-perfect replica of the branding, product categories, and checkout procedures.
+Built using Vite, React Router, and the original CSS/assets of the reference site, ensuring a pixel-perfect replica of the branding, product categories, and checkout procedures.
 
 ---
 
@@ -80,22 +80,18 @@ src/
 
 ## ⚙️ Setup and Installation Instructions
 
-1. **Navigate to the directory**:
-   ```bash
-   cd "d:/All New Code/Code Of Programmimg Hero/assignment from codereft/ecommerce-website"
-   ```
 
-2. **Install Dependencies**:
+1. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-3. **Launch the Local Development Server**:
+2. **Launch the Local Development Server**:
    ```bash
    npm run dev
    ```
 
-4. **Compile Production Bundle**:
+3. **Compile Production Bundle**:
    ```bash
    npm run build
    ```
