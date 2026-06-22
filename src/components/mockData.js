@@ -150,8 +150,134 @@ export const products = [
     ],
     optionTitle: "Dairy Options",
     options: ["Coconut Milk (Vegan)", "Almond Milk", "Classic Condensed Sweet Milk"]
+  },
+  {
+    id: 61,
+    name: "Korean Bibimbap Bowl",
+    category: "bibimbap",
+    price: 620,
+    photo: "1.png",
+    description: "Authentic Korean Bibimbap bowl featuring seasoned beef, a sunny-side-up egg, spicy kimchi, shredded cabbage, seaweed flakes, and grilled sausage slices over a warm bed of rice.",
+    sizes: [{ id: "reg", name: "Standard Portion", price: 620 }],
+    addons: [
+      { id: "addon-kimchi", name: "Spicy Kimchi", price: 50, image: "kimchi.png" },
+      { id: "addon-egg", name: "Extra Fried Egg", price: 30, image: "white.webp" }
+    ],
+    optionTitle: "Choose Egg Prep",
+    options: ["Sunny Side Up", "Fully Fried Egg", "Traditional Raw Yolk"]
+  },
+  {
+    id: 62,
+    name: "Citrus Avocado Poke Bowl",
+    category: "poke-bowls",
+    price: 680,
+    photo: "2.png",
+    description: "A refreshing poke bowl loaded with fresh tuna and salmon chunks, creamy diced avocado, shredded carrots, grapefruit sections, citrusy kumquat slices, fish roe, and fresh cilantro.",
+    sizes: [
+      { id: "reg", name: "Regular Size", price: 680 },
+      { id: "lrg", name: "Large Size", price: 880 }
+    ],
+    addons: [
+      { id: "addon-crab", name: "Crab Stick", price: 60, image: "Crab-Stick.png" },
+      { id: "addon-pine", name: "Pineapple Chunk", price: 40, image: "Pineapple.webp" }
+    ],
+    optionTitle: "Choose Base",
+    options: ["Sushi Rice", "Brown Rice", "Salad Greens"]
+  },
+  {
+    id: 63,
+    name: "Tropical Salmon Poke Bowl",
+    category: "poke-bowls",
+    price: 720,
+    photo: "3.png",
+    description: "Delightful tropical fusion featuring fresh salmon, sweet mango cubes, crisp cucumber, avocado slices, kiwi, edamame beans, cherry tomatoes, and radish wheels.",
+    sizes: [
+      { id: "reg", name: "Regular Size", price: 720 },
+      { id: "lrg", name: "Large Size", price: 920 }
+    ],
+    addons: [
+      { id: "addon-crab", name: "Crab Stick", price: 60, image: "Crab-Stick.png" },
+      { id: "addon-pine", name: "Pineapple Chunk", price: 40, image: "Pineapple.webp" }
+    ],
+    optionTitle: "Choose Base",
+    options: ["Sushi Rice", "Brown Rice", "Salad Greens"]
+  },
+  {
+    id: 64,
+    name: "Classic Ahi Poke Bowl",
+    category: "poke-bowls",
+    price: 700,
+    photo: "4.png",
+    description: "Traditional Ahi Poke bowl featuring fresh yellowfin tuna, Atlantic salmon, crisp cucumber, red onion, sweet mango, edamame, and vibrant fish roe over rice.",
+    sizes: [
+      { id: "reg", name: "Regular Size", price: 700 },
+      { id: "lrg", name: "Large Size", price: 900 }
+    ],
+    addons: [
+      { id: "addon-crab", name: "Crab Stick", price: 60, image: "Crab-Stick.png" },
+      { id: "addon-pine", name: "Pineapple Chunk", price: 40, image: "Pineapple.webp" }
+    ],
+    optionTitle: "Choose Base",
+    options: ["Sushi Rice", "Brown Rice", "Salad Greens"]
+  },
+  {
+    id: 65,
+    name: "Spicy Penne Arrabbiata",
+    category: "fries-hotdogs",
+    price: 480,
+    photo: "1.jpg",
+    description: "Penne pasta tossed in a fiery, garlic-infused tomato sauce, garnished with fresh parsley and sweet cherry tomatoes.",
+    sizes: [{ id: "reg", name: "Standard Portion", price: 480 }],
+    addons: [
+      { id: "addon-cheese", name: "Melted Cheddar Sauce", price: 50, image: "Garlic-Aioli.webp" }
+    ],
+    optionTitle: "Choose Spice Level",
+    options: ["Mild", "Medium", "Extra Spicy"]
+  },
+  {
+    id: 66,
+    name: "Olive Garden Supreme Pizza",
+    category: "fries-hotdogs",
+    price: 550,
+    photo: "2.jpg",
+    description: "Freshly baked thin-crust pizza topped with sliced black olives, green bell peppers, diced tomatoes, sweet corn, onions, and melted mozzarella cheese.",
+    sizes: [{ id: "reg", name: "Personal Size", price: 550 }],
+    addons: [
+      { id: "addon-cheese", name: "Extra Cheese", price: 60, image: "Garlic-Aioli.webp" }
+    ],
+    optionTitle: "Choose Crust",
+    options: ["Thin Crust", "Stuffed Crust", "Gluten Free"]
+  },
+  {
+    id: 67,
+    name: "Toasted Shawarma Wrap",
+    category: "fries-hotdogs",
+    price: 380,
+    photo: "3.jpg",
+    description: "Slices of seasoned grilled beef wrapped in warm flatbread with pickles, garlic paste, and toasted to crispy golden perfection.",
+    sizes: [{ id: "reg", name: "Regular Wrap", price: 380 }],
+    addons: [
+      { id: "addon-jalapeno", name: "Pickled Jalapeños", price: 40, image: "Cucumber.webp" }
+    ],
+    optionTitle: "Sauce Option",
+    options: ["Garlic Sauce", "Spicy Tahini", "Kona Secret Sauce"]
+  },
+  {
+    id: 68,
+    name: "Herbed Grilled Chicken Breast",
+    category: "fries-hotdogs",
+    price: 490,
+    photo: "4.jpg",
+    description: "Juicy, perfectly seasoned grilled chicken breast served with fresh lime slices, shredded carrots, cherry tomatoes, and garden mint.",
+    sizes: [{ id: "reg", name: "Standard Portion", price: 490 }],
+    addons: [
+      { id: "addon-pine", name: "Pineapple Chunk", price: 40, image: "Pineapple.webp" }
+    ],
+    optionTitle: "Choose Cooking Style",
+    options: ["Classic Grilled", "Lemon Pepper", "Spicy Cajun"]
   }
 ];
+
 
 export const events = [
   {

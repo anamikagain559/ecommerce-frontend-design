@@ -1,115 +1,141 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <>
-      {/* Footer Area */}
-      <footer className="footer-area section-padding-2">
-        <div className="container">
-          <div className="row">
-            {/* Column 1: Locations */}
-            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 text-left">
-              <div className="footer-widget mr-4">
-                <div className="footer-logo mb-20">
-                  <a href="/">
-                    <img src="/assets/images/logo.png" alt="Kona Logo" />
-                  </a>
-                </div>
-                <p style={{ fontSize: "14px" }} className="mb-10">
-                  Lakeshore Hotel (Open 24/7)
-                  <br />
-                  House: 46, Road: 41, Gulshan 2, Dhaka 1212
-                </p>
-                <p style={{ fontSize: "14px" }} className="mb-20">
-                  Chefs Table Courtside (12:00 - 22:00)
-                  <br />
-                  Madani Ave, Dhaka 1212
-                </p>
-                <h3 className="cl-primary font-bold" style={{ fontSize: "18px" }}>
-                  Hotline: +8801300290494
-                </h3>
-              </div>
-            </div>
+    <footer 
+      className="footer-area relative overflow-hidden bg-white py-12 border-t border-gray-100 text-center flex flex-col items-center justify-center"
+      style={{ minHeight: "280px" }}
+    >
+      {/* Background Watermark Theme Decorations */}
+      {/* Left Corner: Faded Leaf Cluster */}
+      <img
+        src="/assets/images/leaf-left.png"
+        alt="deco-leaf"
+        className="absolute left-0 bottom-0 h-56 md:h-72 opacity-[0.45] pointer-events-none select-none"
+        style={{ transform: "rotate(-10deg) translate(-20px, 20px)" }}
+      />
+      
+      {/* Right Corner: Faded Leaf + Flower Cluster */}
+      <div 
+        className="absolute right-0 bottom-0 pointer-events-none select-none"
+        style={{ transform: "translate(20px, 20px)" }}
+      >
+        <img
+          src="/assets/images/leaf-right.png"
+          alt="deco-leaf"
+          className="h-56 md:h-72 opacity-[0.40] block"
+          style={{ transform: "rotate(10deg)" }}
+        />
+        <img
+          src="/assets/images/flower.png"
+          alt="deco-flower"
+          className="absolute right-12 bottom-12 h-28 md:h-36 opacity-[0.55] animate-spin"
+          style={{ animationDuration: "60s" }}
+        />
+      </div>
 
-            {/* Column 2: Information */}
-            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 text-left">
-              <div className="footer-widget footer-nav">
-                <h3>Information</h3>
-                <ul>
-                  <li>
-                    <Link to="/about">About Us</Link>
-                  </li>
-                  <li>
-                    <Link to="/menu">Product Information</Link>
-                  </li>
-                  <li>
-                    <Link to="/about">Legal Information</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Column 3: Customer Service */}
-            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 text-left">
-              <div className="footer-widget footer-nav">
-                <h3>Customer Service</h3>
-                <ul>
-                  <li>
-                    <a href="/#location">Contact Us</a>
-                  </li>
-                  <li>
-                    <Link to="/menu">Site Map</Link>
-                  </li>
-                  <li>
-                    <a href="mailto:concierge@konacafebd.com">Webmail</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Column 4: Payment Partners */}
-            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 text-left">
-              <div className="footer-widget footer-nav">
-                <h3>Payment Methods</h3>
-                <img
-                  src="/assets/images/payment.png"
-                  alt="Accepted Payment Methods (SSLCommerz, Visa, MasterCard, BKash, Rocket)"
-                  style={{ width: "100%", maxWidth: "250px", marginTop: "10px" }}
-                />
-              </div>
-            </div>
-          </div>
+      <div className="container relative z-10 flex flex-col items-center space-y-6">
+        {/* 1. Center Brand Logo */}
+        <div className="footer-logo mb-2 transition-transform duration-300 hover:scale-105 inline-block">
+          <Link to="/">
+            <img 
+              src="/assets/images/logo.png" 
+              alt="Kona Cafe Logo" 
+              style={{ height: "65px", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.05))" }}
+            />
+          </Link>
         </div>
-      </footer>
-      {/* /Footer Area */}
 
-      {/* Copyright */}
-      <div className="copyright">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-6 col-lg-6 col-md-6 text-left">
-              <div className="copy-text">
-                <p>&copy; Kona Cafe {new Date().getFullYear()}. All rights reserved</p>
-              </div>
-            </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 text-right">
-              <div className="social">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                  <i className="fa fa-facebook"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                  <i className="fa fa-instagram"></i>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                  <i className="fa fa-twitter"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+        {/* 2. Horizontal Centered Navigation Links */}
+        <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4 py-1">
+          <Link 
+            to="/" 
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              isActive("/") 
+                ? "bg-[#FFA259] text-white shadow-sm" 
+                : "text-gray-600 hover:text-[#FFA259] hover:bg-gray-50"
+            }`}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/menu" 
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              isActive("/menu") 
+                ? "bg-[#FFA259] text-white shadow-sm" 
+                : "text-gray-600 hover:text-[#FFA259] hover:bg-gray-50"
+            }`}
+          >
+            Features Products
+          </Link>
+          <Link 
+            to="/about" 
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              isActive("/about") 
+                ? "bg-[#FFA259] text-white shadow-sm" 
+                : "text-gray-600 hover:text-[#FFA259] hover:bg-gray-50"
+            }`}
+          >
+            About Us
+          </Link>
+          <Link 
+            to="/events" 
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              isActive("/events") 
+                ? "bg-[#FFA259] text-white shadow-sm" 
+                : "text-gray-600 hover:text-[#FFA259] hover:bg-gray-50"
+            }`}
+          >
+            Testimonials
+          </Link>
+          <Link 
+            to="/about" 
+            className="px-4 py-1.5 rounded-full text-sm font-semibold text-gray-600 hover:text-[#FFA259] hover:bg-gray-50 transition-all duration-300"
+          >
+            Blog
+          </Link>
+        </div>
+
+        {/* 3. Centered Social Media Buttons */}
+        <div className="flex justify-center gap-3.5 pt-1">
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noreferrer"
+            className="h-9 w-9 rounded-full bg-[#00A186] text-white flex items-center justify-center hover:scale-110 hover:bg-[#FFA259] transition-all duration-300 shadow-sm"
+          >
+            <i className="fa fa-twitter" style={{ fontSize: "14px" }}></i>
+          </a>
+          <a 
+            href="https://facebook.com" 
+            target="_blank" 
+            rel="noreferrer"
+            className="h-9 w-9 rounded-full bg-[#00A186] text-white flex items-center justify-center hover:scale-110 hover:bg-[#FFA259] transition-all duration-300 shadow-sm"
+          >
+            <i className="fa fa-facebook" style={{ fontSize: "14px" }}></i>
+          </a>
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noreferrer"
+            className="h-9 w-9 rounded-full bg-[#00A186] text-white flex items-center justify-center hover:scale-110 hover:bg-[#FFA259] transition-all duration-300 shadow-sm"
+          >
+            <i className="fa fa-instagram" style={{ fontSize: "14px" }}></i>
+          </a>
+        </div>
+
+        {/* 4. Centered Copyright */}
+        <div className="pt-4 border-t border-gray-100 w-full max-w-lg">
+          <p className="m-0 text-xs text-gray-400 font-light tracking-wide">
+            All Rights Reserved
+          </p>
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 

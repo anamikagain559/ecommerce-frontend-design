@@ -1,10 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { products } from "../mockData";
+
 
 const LandingPage = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeShack, setActiveShack] = useState(0);
+  const scrollContainerRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -320,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 320,
+        behavior: "smooth",
+      });
+    }
+  };
+
 
   const slides = [
     {
@@ -238,6 +260,87 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* 2.5. BEST SELLING PRODUCTS CAROUSEL */}
+      <section className="py-16 bg-[#F8F8F8] relative" id="best-selling">
+        <div className="container relative">
+          {/* Header Row */}
+          <div className="flex justify-between items-end mb-30 px-4">
+            <div className="relative">
+              <h2 className="font-playfair font-extrabold text-[#1a1a1a]" style={{ fontSize: "36px", margin: 0 }}>
+                Best Selling
+              </h2>
+              <div className="h-[3px] w-14 bg-[#FFA259] mt-2 rounded"></div>
+            </div>
+            <Link 
+              to="/menu" 
+              className="text-sm font-bold uppercase tracking-wider text-[#888] hover:text-[#FFA259] transition-colors"
+            >
+              View All
+            </Link>
+          </div>
+
+          {/* Carousel Slider */}
+          <div className="relative px-2">
+            {/* Left Button */}
+            <button 
+              onClick={scrollLeft}
+              className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-800 shadow-md border border-gray-100 rounded-full w-11 h-11 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+              style={{ cursor: "pointer" }}
+              aria-label="Previous products"
+            >
+              <i className="fa fa-chevron-left text-xs text-gray-500"></i>
+            </button>
+
+            {/* Scroll Container */}
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-none py-6 px-2"
+            >
+              {products
+                .filter((product) => product.id >= 61 && product.id <= 68)
+                .map((product) => (
+                  <div 
+                    key={product.id}
+                    className="bg-white border border-gray-100 rounded-[28px] shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col items-center justify-between text-center w-[250px] md:w-[270px] flex-shrink-0"
+                  >
+                    {/* Food Image Circle */}
+                    <Link 
+                      to={`/product/${product.id}`} 
+                      className="w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-50 flex items-center justify-center p-2 mb-4 shadow-inner relative group/img"
+                      style={{ display: "flex" }}
+                    >
+                      <img 
+                        src={`/erp/images/${product.photo}`} 
+                        alt={product.name} 
+                        className="w-[90%] h-[90%] object-cover rounded-full transition-transform duration-500 group-hover/img:scale-105"
+                      />
+                    </Link>
+                    
+                    {/* Title & Price */}
+                    <div className="flex flex-col flex-grow w-full justify-between">
+                      <h4 className="font-playfair font-bold text-gray-900 mb-2 text-base md:text-[17px] line-clamp-2 min-h-[46px] hover:text-[#FFA259] transition-colors leading-snug">
+                        <Link to={`/product/${product.id}`}>{product.name}</Link>
+                      </h4>
+                      <p className="text-[#FFA259] font-bold text-lg md:text-xl mt-auto m-0">
+                        ৳{product.price}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            <button 
+              onClick={scrollRight}
+              className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-800 shadow-md border border-gray-100 rounded-full w-11 h-11 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+              style={{ cursor: "pointer" }}
+              aria-label="Next products"
+            >
+              <i className="fa fa-chevron-right text-xs text-gray-500"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* 3. KONA REVIVES YOU (Floating Card layout with top/bottom margin) */}
       <section 
         className="relative overflow-hidden my-16 md:my-24 mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] shadow-md border border-[#FFA259]/10" 
@@ -358,6 +461,405 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5. FEATURED CATEGORIES */}
+      <section className="py-20 bg-white relative overflow-hidden" id="categories">
+        {/* Subtle top border line */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#FFA259] rounded-b-full"></div>
+
+        <div className="container">
+          {/* Header */}
+          <div className="text-center mb-14">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#FFA259] font-extrabold bg-[#FFA259]/10 px-4 py-2 rounded-full inline-block mb-4">
+              Explore Our Menu
+            </span>
+            <h2 className="font-playfair font-extrabold text-[#1a1a1a] mt-3" style={{ fontSize: "38px" }}>
+              Featured Categories
+            </h2>
+            <div className="h-1 w-14 bg-[#FFA259] mx-auto mt-4 rounded"></div>
+          </div>
+
+          {/* Category Cards Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
+            {[
+              { id: "poke-bowls", name: "Poke Bowls", icon: "🥗", color: "#00A186", bg: "#00A186", desc: "Fresh Hawaiian bowls", count: "6+ items" },
+              { id: "bibimbap", name: "Bibimbap", icon: "🍚", color: "#E15C6C", bg: "#E15C6C", desc: "Korean comfort food", count: "3+ items" },
+              { id: "fries-hotdogs", name: "Fries & Hotdogs", icon: "🌭", color: "#FFA259", bg: "#FFA259", desc: "Crispy snacks & dogs", count: "5+ items" },
+              { id: "juice-smoothies", name: "Juice & Smoothies", icon: "🧃", color: "#1494C3", bg: "#1494C3", desc: "Fresh blended drinks", count: "4+ items" }
+            ].map((cat) => (
+              <Link
+                to={`/menu?category=${cat.id}`}
+                key={cat.id}
+                className="group flex flex-col items-center text-center rounded-[28px] p-8 border border-gray-100 hover:border-transparent hover:shadow-xl transition-all duration-400 bg-white hover:-translate-y-1 relative overflow-hidden"
+                style={{ cursor: "pointer" }}
+              >
+                {/* Hover gradient background */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-400 rounded-[28px]"
+                  style={{ background: `radial-gradient(circle at 50% 50%, ${cat.bg}, transparent 70%)` }}
+                ></div>
+
+                {/* Icon circle */}
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-5 shadow-sm transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: `${cat.color}15`, border: `2px solid ${cat.color}25` }}
+                >
+                  {cat.icon}
+                </div>
+
+                <h4 className="font-playfair font-bold text-gray-900 text-base md:text-lg mb-1 group-hover:text-[#FFA259] transition-colors">{cat.name}</h4>
+                <p className="text-xs text-gray-400 font-light mb-3">{cat.desc}</p>
+                <span
+                  className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full"
+                  style={{ backgroundColor: `${cat.color}15`, color: cat.color }}
+                >
+                  {cat.count}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3.6. FEATURED PRODUCTS */}
+      <section className="py-20 bg-[#F8F8F8] relative" id="featured">
+        <div className="container">
+          {/* Header */}
+          <div className="flex justify-between items-end mb-12 px-4">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#E15C6C] font-extrabold bg-[#E15C6C]/10 px-4 py-2 rounded-full inline-block mb-3">
+                Top Picks
+              </span>
+              <h2 className="font-playfair font-extrabold text-[#1a1a1a] mt-2" style={{ fontSize: "36px", margin: 0 }}>
+                Featured Products
+              </h2>
+              <div className="h-[3px] w-12 bg-[#E15C6C] mt-3 rounded"></div>
+            </div>
+            <Link to="/menu" className="text-sm font-bold uppercase tracking-wider text-[#888] hover:text-[#E15C6C] transition-colors hidden md:block">
+              Browse All →
+            </Link>
+          </div>
+
+          {/* Products Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+            {products.filter(p => [50, 63, 61, 40].includes(p.id)).map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-400 hover:-translate-y-1 group"
+              >
+                {/* Product Image */}
+                <Link to={`/product/${product.id}`} className="block relative overflow-hidden" style={{ height: "200px" }}>
+                  <img
+                    src={`/erp/images/${product.photo}`}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
+                    style={{ objectFit: "cover" }}
+                  />
+                  {/* Popular badge */}
+                  <span className="absolute top-3 left-3 bg-[#FFA259] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">
+                    Popular
+                  </span>
+                </Link>
+
+                {/* Card Body */}
+                <div className="p-5">
+                  <h4 className="font-playfair font-bold text-gray-900 text-base mb-1 line-clamp-1 group-hover:text-[#FFA259] transition-colors">
+                    {product.name}
+                  </h4>
+                  <p className="text-xs text-gray-400 mb-4 line-clamp-2 font-light leading-relaxed">
+                    {product.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#FFA259] font-extrabold text-lg">৳{product.price}</span>
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="h-9 w-9 rounded-full bg-[#FFA259] text-white flex items-center justify-center hover:bg-[#FF8C3A] transition-colors shadow-sm text-sm"
+                    >
+                      <i className="fa fa-plus"></i>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10 md:hidden">
+            <Link to="/menu" className="bttn-mid btn-fill" style={{ background: "linear-gradient(135deg, #E15C6C 0%, #FF8A9A 100%)" }}>
+              Browse All Items →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.7. SPECIAL OFFERS */}
+      <section className="relative overflow-hidden py-0 my-0" id="offers">
+        <div
+          className="relative mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #FFA259 0%, #FF6B6B 50%, #E15C6C 100%)",
+            minHeight: "280px"
+          }}
+        >
+          {/* Decorative circles */}
+          <div className="absolute -top-16 -right-16 w-60 h-60 rounded-full bg-white/10 pointer-events-none"></div>
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-white/10 pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 rounded-full bg-white/5 pointer-events-none"></div>
+
+          {/* Content */}
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between px-10 md:px-16 py-14 gap-8">
+            <div className="text-white text-center md:text-left">
+              <span className="text-xs uppercase tracking-[0.3em] font-extrabold bg-white/20 px-4 py-1.5 rounded-full inline-block mb-4">
+                Limited Time Offer
+              </span>
+              <h2 className="font-playfair font-extrabold leading-tight mb-3" style={{ fontSize: "40px" }}>
+                Get <span className="text-yellow-200">20% OFF</span> Your First Order!
+              </h2>
+              <p className="text-white/80 font-light text-base max-w-md">
+                Use code <strong className="bg-white/20 px-3 py-1 rounded-lg font-extrabold tracking-wider">KONA20</strong> at checkout. Valid for all dine-in and delivery orders this week.
+              </p>
+            </div>
+
+            {/* CTA */}
+            <div className="shrink-0 flex flex-col items-center gap-4">
+              <Link
+                to="/menu"
+                className="bg-white font-extrabold text-[#FFA259] px-10 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 text-sm tracking-wider uppercase whitespace-nowrap"
+              >
+                Order Now →
+              </Link>
+              <p className="text-white/60 text-[10px] font-light">*Terms and conditions apply</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.8. WHY CHOOSE US */}
+      <section className="py-24 bg-white relative" id="why-us">
+        <div className="container">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#00A186] font-extrabold bg-[#00A186]/10 px-4 py-2 rounded-full inline-block mb-4">
+              Our Promise
+            </span>
+            <h2 className="font-playfair font-extrabold text-[#1a1a1a] mt-3" style={{ fontSize: "38px" }}>
+              Why Choose Kona Cafe?
+            </h2>
+            <div className="h-1 w-16 bg-[#00A186] mx-auto mt-4 rounded"></div>
+          </div>
+
+          {/* Value Columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            {[
+              {
+                icon: "🌿",
+                color: "#00A186",
+                title: "100% Fresh Ingredients",
+                desc: "We source our produce daily from local farms and trusted seafood suppliers, ensuring every bowl is bursting with nutrients and flavor."
+              },
+              {
+                icon: "⚡",
+                color: "#FFA259",
+                title: "Fast Delivery",
+                desc: "Your order delivered hot and fresh in under 45 minutes. We partner with the best logistics providers to ensure speed and care."
+              },
+              {
+                icon: "🏆",
+                color: "#E15C6C",
+                title: "Award-Winning Recipes",
+                desc: "Our signature dishes have won multiple Best Restaurant awards in Dhaka since 2019, recognized for authentic Hawaiian flavors."
+              },
+              {
+                icon: "💚",
+                color: "#1494C3",
+                title: "Healthy & Balanced",
+                desc: "Low-calorie, high-protein bowls crafted by our in-house nutritionist. We offer vegan, gluten-free, and dairy-free options too."
+              }
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="group flex flex-col items-center text-center p-8 rounded-[24px] border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-400 hover:-translate-y-1"
+              >
+                <div
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: `${item.color}12`, border: `2px solid ${item.color}20` }}
+                >
+                  {item.icon}
+                </div>
+                <h4 className="font-playfair font-bold text-gray-900 text-lg mb-3">{item.title}</h4>
+                <p className="text-sm text-gray-400 font-light leading-relaxed">{item.desc}</p>
+                <div className="h-[3px] w-8 mt-5 rounded" style={{ backgroundColor: item.color }}></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3.9. CUSTOMER REVIEWS */}
+      <section className="py-24 bg-[#F8F8F8] relative overflow-hidden" id="reviews">
+        {/* Watermark leaf */}
+        <img
+          src="/assets/images/leaf.png"
+          alt=""
+          className="absolute -right-16 top-0 w-48 opacity-5 pointer-events-none"
+        />
+
+        <div className="container">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#FFA259] font-extrabold bg-[#FFA259]/10 px-4 py-2 rounded-full inline-block mb-4">
+              What Our Guests Say
+            </span>
+            <h2 className="font-playfair font-extrabold text-[#1a1a1a] mt-3" style={{ fontSize: "38px" }}>
+              Customer Reviews
+            </h2>
+            <div className="h-1 w-14 bg-[#FFA259] mx-auto mt-4 rounded"></div>
+          </div>
+
+          {/* Review Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            {[
+              {
+                name: "Anika Rahman",
+                role: "Regular Customer",
+                avatar: "AR",
+                color: "#00A186",
+                rating: 5,
+                text: "Honestly the best Poke Bowl in Dhaka! The Hawaiian Bun Hotdog is insane – the sweetness of the bun with the grilled sausage is just perfect. I visit at least twice a week!",
+                dish: "Hawaiian Poke Bowl"
+              },
+              {
+                name: "Rafid Hossain",
+                role: "Food Blogger",
+                avatar: "RH",
+                color: "#E15C6C",
+                rating: 5,
+                text: "I've reviewed over 200 restaurants in Dhaka, and Kona Cafe stands out for its freshness and authenticity. The Lychee Boba Tea is handcrafted perfection. Highly recommended!",
+                dish: "Lychee Rose Boba Tea"
+              },
+              {
+                name: "Samia Tasnim",
+                role: "Loyal Member",
+                avatar: "ST",
+                color: "#FFA259",
+                rating: 5,
+                text: "The Bibimbap here reminds me of my trip to Seoul! The kimchi side, the runny egg, the marinated beef – it's all cooked just right. The Banani shack has great ambiance too.",
+                dish: "Korean Bibimbap Bowl"
+              }
+            ].map((review, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-[24px] p-8 border border-gray-100 hover:shadow-xl transition-all duration-400 hover:-translate-y-1 relative"
+              >
+                {/* Large quote mark */}
+                <span className="absolute top-6 right-8 text-6xl font-serif leading-none opacity-10 select-none" style={{ color: review.color }}>
+                  "
+                </span>
+
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(review.rating)].map((_, s) => (
+                    <span key={s} className="text-[#FFA259] text-sm">★</span>
+                  ))}
+                </div>
+
+                {/* Review text */}
+                <p className="text-gray-600 font-light leading-relaxed text-sm mb-6">
+                  "{review.text}"
+                </p>
+
+                {/* Dish tag */}
+                <span
+                  className="text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-5 inline-block"
+                  style={{ backgroundColor: `${review.color}15`, color: review.color }}
+                >
+                  Ordered: {review.dish}
+                </span>
+
+                {/* Reviewer info */}
+                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-50">
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
+                    style={{ backgroundColor: review.color }}
+                  >
+                    {review.avatar}
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900 text-sm m-0">{review.name}</p>
+                    <p className="text-xs text-gray-400 font-light m-0">{review.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3.10. NEWSLETTER */}
+      <section className="py-0 my-0 relative overflow-hidden" id="newsletter">
+        <div
+          className="relative mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] overflow-hidden mb-16"
+          style={{
+            background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
+          }}
+        >
+          {/* Decorative glows */}
+          <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-[#FFA259]/15 blur-[80px] pointer-events-none"></div>
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-[#00A186]/10 blur-[80px] pointer-events-none"></div>
+
+          <div className="relative z-10 flex flex-col items-center text-center py-16 px-8 md:px-20">
+            {/* Icon */}
+            <div className="w-14 h-14 rounded-full bg-[#FFA259]/20 border border-[#FFA259]/30 flex items-center justify-center mb-6">
+              <i className="fa fa-envelope text-[#FFA259] text-xl"></i>
+            </div>
+
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#FFA259] font-extrabold bg-[#FFA259]/10 px-4 py-2 rounded-full inline-block mb-5">
+              Stay Connected
+            </span>
+            <h2 className="font-playfair font-extrabold text-white mb-4" style={{ fontSize: "36px" }}>
+              Subscribe to Our Newsletter
+            </h2>
+            <p className="text-white/60 font-light text-sm mb-8 max-w-md leading-relaxed">
+              Get weekly deals, new menu drops, exclusive event invites, and a <strong className="text-[#FFA259]">15% discount</strong> on your next order – straight to your inbox.
+            </p>
+
+            {/* Input form */}
+            <form
+              className="flex flex-col sm:flex-row gap-3 w-full max-w-lg"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const email = e.target.email.value;
+                if (email) {
+                  e.target.reset();
+                  Swal.fire({
+                    title: "You're Subscribed! 🎉",
+                    text: "Welcome to the Kona family! Check your inbox for your 15% discount code.",
+                    icon: "success",
+                    confirmButtonColor: "#FFA259",
+                    background: "#fff",
+                  });
+                }
+              }}
+            >
+              <input
+                id="newsletter-email"
+                name="email"
+                type="email"
+                required
+                placeholder="Enter your email address..."
+                className="flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-[#FFA259] transition-colors backdrop-blur-sm"
+              />
+              <button
+                type="submit"
+                className="bg-[#FFA259] hover:bg-[#FF8C3A] text-white font-bold text-sm px-8 py-3.5 rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-lg whitespace-nowrap"
+              >
+                Subscribe Now
+              </button>
+            </form>
+
+            <p className="text-white/30 text-[10px] mt-4 font-light">No spam ever. Unsubscribe anytime with one click.</p>
           </div>
         </div>
       </section>
