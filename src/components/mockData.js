@@ -13,7 +13,7 @@ export const products = [
     name: "Korean Bibimbap Bowl",
     category: "bibimbap",
     price: 620,
-    photo: "1.png",
+    photo: "https://i.ibb.co.com/mF4VsqR0/1.jpg",
     description: "Authentic Korean Bibimbap bowl featuring seasoned beef, a sunny-side-up egg, spicy kimchi, shredded cabbage, seaweed flakes, and grilled sausage slices over a warm bed of rice.",
     sizes: [{ id: "reg", name: "Standard Portion", price: 620 }],
     addons: [
@@ -28,7 +28,7 @@ export const products = [
     name: "Citrus Avocado Poke Bowl",
     category: "poke-bowls",
     price: 680,
-    photo: "2.png",
+    photo: "https://i.ibb.co.com/nqyYpVCn/2.png",
     description: "A refreshing poke bowl loaded with fresh tuna and salmon chunks, creamy diced avocado, shredded carrots, grapefruit sections, citrusy kumquat slices, fish roe, and fresh cilantro.",
     sizes: [
       { id: "reg", name: "Regular Size", price: 680 },
@@ -46,7 +46,7 @@ export const products = [
     name: "Tropical Salmon Poke Bowl",
     category: "poke-bowls",
     price: 720,
-    photo: "3.png",
+    photo: "https://i.ibb.co.com/RTz1Kcfy/3.jpg",
     description: "Delightful tropical fusion featuring fresh salmon, sweet mango cubes, crisp cucumber, avocado slices, kiwi, edamame beans, cherry tomatoes, and radish wheels.",
     sizes: [
       { id: "reg", name: "Regular Size", price: 720 },
@@ -64,7 +64,7 @@ export const products = [
     name: "Classic Ahi Poke Bowl",
     category: "poke-bowls",
     price: 700,
-    photo: "4.png",
+    photo: "https://i.ibb.co.com/Q7Pb8hpZ/4.jpg",
     description: "Traditional Ahi Poke bowl featuring fresh yellowfin tuna, Atlantic salmon, crisp cucumber, red onion, sweet mango, edamame, and vibrant fish roe over rice.",
     sizes: [
       { id: "reg", name: "Regular Size", price: 700 },
@@ -96,7 +96,7 @@ export const products = [
     name: "Olive Garden Supreme Pizza",
     category: "fries-hotdogs",
     price: 550,
-    photo: "2.jpg",
+    photo: "https://i.ibb.co.com/nqyYpVCn/2.png",
     description: "Freshly baked thin-crust pizza topped with sliced black olives, green bell peppers, diced tomatoes, sweet corn, onions, and melted mozzarella cheese.",
     sizes: [{ id: "reg", name: "Personal Size", price: 550 }],
     addons: [
@@ -110,7 +110,7 @@ export const products = [
     name: "Toasted Shawarma Wrap",
     category: "fries-hotdogs",
     price: 380,
-    photo: "3.jpg",
+    photo: "https://i.ibb.co.com/0pmFxVZC/3.png",
     description: "Slices of seasoned grilled beef wrapped in warm flatbread with pickles, garlic paste, and toasted to crispy golden perfection.",
     sizes: [{ id: "reg", name: "Regular Wrap", price: 380 }],
     addons: [
@@ -124,7 +124,7 @@ export const products = [
     name: "Herbed Grilled Chicken Breast",
     category: "fries-hotdogs",
     price: 490,
-    photo: "4.jpg",
+    photo: "https://i.ibb.co.com/Q7Pb8hpZ/4.jpg",
     description: "Juicy, perfectly seasoned grilled chicken breast served with fresh lime slices, shredded carrots, cherry tomatoes, and garden mint.",
     sizes: [{ id: "reg", name: "Standard Portion", price: 490 }],
     addons: [
@@ -133,14 +133,12 @@ export const products = [
     optionTitle: "Choose Cooking Style",
     options: ["Classic Grilled", "Lemon Pepper", "Spicy Cajun"]
   },
-
-  // ── DRINKS & COFFEE ──
   {
     id: 70,
     name: "Kona Volcanic Latte",
     category: "drinks-coffee",
     price: 250,
-    photo: "konaCup.webp",
+    photo: "https://i.ibb.co.com/9kYqzYFq/Coffee-in-Kona-3-Cappuccinos.jpg",
     description: "Our signature espresso shot pulled from 100% Kona volcanic-soil beans, topped with velvety steamed milk and a dusting of Hawaiian black lava salt for a bold, smooth finish.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 250 },
@@ -158,7 +156,7 @@ export const products = [
     name: "Lava Salt Caramel Macchiato",
     category: "drinks-coffee",
     price: 290,
-    photo: "lava.webp",
+    photo: "https://i.ibb.co.com/FgnK9G1/coffee-cup.jpg",
     description: "Layered espresso macchiato with rich caramel sauce, velvety foam, and a bold sprinkle of Hawaiian lava salt — a beautifully balanced sweet-and-salty coffee experience.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 290 },
@@ -175,7 +173,7 @@ export const products = [
     name: "Lychee Rose Bubble Tea",
     category: "drinks-coffee",
     price: 280,
-    photo: "lycheerosetea.webp",
+    photo: "https://i.ibb.co.com/SVLYhM1/images-3.jpg",
     description: "Premium jasmine rose green tea infused with lychee juice, loaded with chewy tapioca pearls and lychee popping boba. Sweet, floral and utterly refreshing.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 280 },
@@ -192,7 +190,7 @@ export const products = [
     name: "Gochugaru Spicy Mocha",
     category: "drinks-coffee",
     price: 270,
-    photo: "Gochugaro.webp",
+    photo: "https://i.ibb.co.com/7pGcYb2/images-1.jpg",
     description: "A daring fusion of rich dark chocolate mocha with a subtle fiery kick of Korean gochugaru chilli flakes, topped with whipped cream and dark cocoa powder.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 270 },
@@ -209,7 +207,7 @@ export const products = [
     name: "Korean BBQ Cold Brew",
     category: "drinks-coffee",
     price: 260,
-    photo: "Korean-BBQ.webp",
+    photo: "https://i.ibb.co.com/HrCtZ8g/Screenshot-2024-04-24-114006.png",
     description: "Smooth, 18-hour cold-steeped dark roast coffee with hints of smoky BBQ vanilla, served over crystal-clear ice cubes with a swirl of condensed milk.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 260 }
@@ -226,7 +224,7 @@ export const products = [
     name: "Umami Ranch Iced Coffee",
     category: "drinks-coffee",
     price: 240,
-    photo: "ranch.webp",
+    photo: "https://i.ibb.co.com/7xbKTDph/spicy-cowgirl-coffee-1616524606.avif",
     description: "A uniquely bold Kona-house iced coffee with creamy ranch-style butter foam, brewed from our signature single-origin Hawaiian bean blend, served over crushed ice.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 240 },
@@ -239,7 +237,6 @@ export const products = [
     options: ["Iced", "Blended Frappe"]
   }
 ];
-
 
 export const events = [
   {

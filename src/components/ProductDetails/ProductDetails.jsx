@@ -5,9 +5,9 @@ import { useCart } from "../../Provider/CartProvider";
 import Swal from "sweetalert2";
 
 const categoryColors = {
-  "poke-bowls":      { accent: "#00A186", bg: "#00A18612", label: "Poke Bowls" },
-  "bibimbap":        { accent: "#E15C6C", bg: "#E15C6C12", label: "Bibimbap" },
-  "fries-hotdogs":   { accent: "#FFA259", bg: "#FFA25912", label: "Fries & Hotdogs" },
+  "poke-bowls": { accent: "#00A186", bg: "#00A18612", label: "Poke Bowls" },
+  "bibimbap": { accent: "#E15C6C", bg: "#E15C6C12", label: "Bibimbap" },
+  "fries-hotdogs": { accent: "#FFA259", bg: "#FFA25912", label: "Fries & Hotdogs" },
   "juice-smoothies": { accent: "#1494C3", bg: "#1494C312", label: "Juice & Smoothies" },
 };
 
@@ -31,11 +31,11 @@ const ProductDetails = () => {
 
   const theme = categoryColors[product.category] || { accent: "#FFA259", bg: "#FFA25912", label: "Menu" };
 
-  const [selectedSize, setSelectedSize]     = useState(product.sizes[0]);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [selectedOption, setSelectedOption] = useState(product.options[0]);
   const [selectedAddons, setSelectedAddons] = useState([]);
-  const [quantity, setQuantity]             = useState(1);
-  const [imgLoaded, setImgLoaded]           = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     setSelectedSize(product.sizes[0]);
@@ -55,7 +55,7 @@ const ProductDetails = () => {
   const handleQuantity = (val) => { if (val >= 1) setQuantity(val); };
 
   const addonTotal = selectedAddons.reduce((s, a) => s + a.price, 0);
-  const livePrice  = (selectedSize.price + addonTotal) * quantity;
+  const livePrice = (selectedSize.price + addonTotal) * quantity;
 
   const handleAddToCartSubmit = (e) => {
     e.preventDefault();
@@ -121,7 +121,7 @@ const ProductDetails = () => {
                 <div className="relative rounded-[32px] overflow-hidden border border-white shadow-2xl bg-white"
                   style={{ aspectRatio: "4/3" }}>
                   <img
-                    src={`/erp/images/${product.photo}`}
+                    src={`${product.photo}`}
                     alt={product.name}
                     onLoad={() => setImgLoaded(true)}
                     className={`w-full h-full object-cover transition-all duration-700 ${imgLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
@@ -151,7 +151,7 @@ const ProductDetails = () => {
 
                 {/* Rating stars (decorative) */}
                 <div className="flex items-center gap-2 mb-5">
-                  {[1,2,3,4,5].map(s => (
+                  {[1, 2, 3, 4, 5].map(s => (
                     <span key={s} className="text-[#FFA259] text-lg">★</span>
                   ))}
                   <span className="text-xs text-gray-400 font-light ml-1">(48 reviews)</span>

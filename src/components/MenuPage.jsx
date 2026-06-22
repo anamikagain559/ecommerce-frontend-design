@@ -61,7 +61,7 @@ const MenuPage = () => {
       {/* ── HERO BANNER ── */}
       <div
         className="relative overflow-hidden pt-24 pb-16"
-        style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" }}
+        style={{ background: "linear-gradient(135deg, #6b6b75ff 0%, #5cc096ff 50%, #478bdaff 100%)" }}
       >
         {/* Glow blobs */}
         <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-[#FFA259]/15 blur-[100px] pointer-events-none" />
@@ -191,7 +191,7 @@ const MenuPage = () => {
                   {/* Image */}
                   <Link to={`/product/${product.id}`} className="block relative overflow-hidden flex-shrink-0" style={{ height: "200px" }}>
                     <img
-                      src={`/erp/images/${product.photo}`}
+                      src={`${product.photo}`}
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-108"
                     />

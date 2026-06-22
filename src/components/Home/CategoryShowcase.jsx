@@ -217,7 +217,7 @@ const CategoryShowcase = () => {
                 {/* Product Image */}
                 <Link to={`/product/${product.id}`} className="block relative overflow-hidden" style={{ height: "200px" }}>
                   <img
-                    src={`/erp/images/${product.photo}`}
+                    src={`${product.photo}`}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
                     style={{ objectFit: "cover" }}

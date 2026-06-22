@@ -94,7 +94,7 @@ const BestSellingCarousel = () => {
                 <div className="bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-400 hover:-translate-y-1 group flex flex-col h-full">
                   <Link to={`/product/${product.id}`} className="block relative h-56 w-full overflow-hidden">
                     <img
-                      src={`/erp/images/${product.photo}`}
+                      src={`${product.photo}`}
                       alt={product.name}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
