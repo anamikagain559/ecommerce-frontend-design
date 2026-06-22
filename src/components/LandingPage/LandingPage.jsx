@@ -1,52 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { products } from "../mockData";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 
 const LandingPage = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeShack, setActiveShack] = useState(0);
-  const scrollContainerRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -320,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 320,
-        behavior: "smooth",
-      });
-    }
-  };
+  const [activeReview, setActiveReview] = useState(2);
 
 
   const slides = [
     {
       title: "Bursting With Flavour",
       description: "The finest ingredients from land and sea, serving them up Hawaii-style, as fresh and wholesome bowls.",
-      productId: 50,
+      productId: 64,
       image: "/assets/images/food.png",
       colorClass: "cl-mint"
     },
     {
       title: "A Bowl Full Of Love!",
       description: "The original inspiration for Ahi Poké came following a road trip up the California coast. Traditional forms are aku and heʻe.",
-      productId: 52,
+      productId: 62,
       image: "/assets/images/food-3.png",
       colorClass: "cl-pink"
     },
     {
       title: "Bibimbap - The Ultimate Comfort Food !!",
       description: "More traditional and authentic versions of Bibimbap are made with beef and raw egg yolk along with fresh seasoned vegetables.",
-      productId: 48,
+      productId: 61,
       image: "/assets/images/food-2.png",
       colorClass: "cl-blue"
     }
@@ -260,84 +247,105 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* 2.5. BEST SELLING PRODUCTS CAROUSEL */}
+      {/* 2.5. BEST SELLING PRODUCTS CAROUSEL — Swiper */}
       <section className="py-16 bg-[#F8F8F8] relative" id="best-selling">
+        <style>{`
+          #best-selling .swiper-button-next,
+          #best-selling .swiper-button-prev {
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+            border: 1px solid #f0f0f0;
+            color: #555;
+          }
+          #best-selling .swiper-button-next::after,
+          #best-selling .swiper-button-prev::after {
+            font-size: 14px;
+            font-weight: 900;
+          }
+          #best-selling .swiper-button-next:hover,
+          #best-selling .swiper-button-prev:hover {
+            background: #FFA259;
+            color: #fff;
+            border-color: #FFA259;
+          }
+          #best-selling .swiper-pagination-bullet {
+            background: #ccc;
+            opacity: 1;
+          }
+          #best-selling .swiper-pagination-bullet-active {
+            background: #FFA259;
+            width: 24px;
+            border-radius: 4px;
+          }
+        `}</style>
+
         <div className="container relative">
           {/* Header Row */}
-          <div className="flex justify-between items-end mb-30 px-4">
+          <div className="flex justify-between items-end mb-8 px-4">
             <div className="relative">
               <h2 className="font-playfair font-extrabold text-[#1a1a1a]" style={{ fontSize: "36px", margin: 0 }}>
                 Best Selling
               </h2>
               <div className="h-[3px] w-14 bg-[#FFA259] mt-2 rounded"></div>
             </div>
-            <Link 
-              to="/menu" 
+            <Link
+              to="/menu"
               className="text-sm font-bold uppercase tracking-wider text-[#888] hover:text-[#FFA259] transition-colors"
             >
               View All
             </Link>
           </div>
 
-          {/* Carousel Slider */}
-          <div className="relative px-2">
-            {/* Left Button */}
-            <button 
-              onClick={scrollLeft}
-              className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-800 shadow-md border border-gray-100 rounded-full w-11 h-11 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
-              style={{ cursor: "pointer" }}
-              aria-label="Previous products"
-            >
-              <i className="fa fa-chevron-left text-xs text-gray-500"></i>
-            </button>
-
-            {/* Scroll Container */}
-            <div 
-              ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-none py-6 px-2"
-            >
-              {products
-                .filter((product) => product.id >= 61 && product.id <= 68)
-                .map((product) => (
-                  <div 
-                    key={product.id}
-                    className="bg-white border border-gray-100 rounded-[28px] shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col items-center justify-between text-center w-[250px] md:w-[270px] flex-shrink-0"
-                  >
+          {/* Swiper Slider */}
+          <Swiper
+            modules={[Navigation, Pagination, A11y]}
+            spaceBetween={24}
+            slidesPerView={1}
+            centeredSlides={false}
+            navigation
+            pagination={{ clickable: true }}
+            loop={true}
+            breakpoints={{
+              640:  { slidesPerView: 2, spaceBetween: 20 },
+              768:  { slidesPerView: 3, spaceBetween: 24 },
+              1024: { slidesPerView: 4, spaceBetween: 24 },
+            }}
+            style={{ paddingBottom: "48px", paddingLeft: "4px", paddingRight: "4px" }}
+          >
+            {products
+              .filter((product) => product.id >= 61 && product.id <= 68)
+              .map((product) => (
+                <SwiperSlide key={product.id}>
+                  <div className="bg-white border border-gray-100 rounded-[28px] shadow-sm hover:shadow-lg transition-all duration-300 p-6 flex flex-col items-center justify-between text-center h-full">
                     {/* Food Image Circle */}
-                    <Link 
-                      to={`/product/${product.id}`} 
-                      className="w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-50 flex items-center justify-center p-2 mb-4 shadow-inner relative group/img"
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="w-36 h-36 rounded-full overflow-hidden bg-gray-50 flex items-center justify-center p-2 mb-4 shadow-inner relative group/img"
                       style={{ display: "flex" }}
                     >
-                      <img 
-                        src={`/erp/images/${product.photo}`} 
-                        alt={product.name} 
-                        className="w-[90%] h-[90%] object-cover rounded-full transition-transform duration-500 group-hover/img:scale-105"
+                      <img
+                        src={`/erp/images/${product.photo}`}
+                        alt={product.name}
+                        className="w-[90%] h-[90%] object-cover rounded-full transition-transform duration-500 group-hover/img:scale-110"
                       />
                     </Link>
-                    
+
                     {/* Title & Price */}
                     <div className="flex flex-col flex-grow w-full justify-between">
-                      <h4 className="font-playfair font-bold text-gray-900 mb-2 text-base md:text-[17px] line-clamp-2 min-h-[46px] hover:text-[#FFA259] transition-colors leading-snug">
+                      <h4 className="font-playfair font-bold text-gray-900 mb-2 text-base line-clamp-2 min-h-[46px] hover:text-[#FFA259] transition-colors leading-snug">
                         <Link to={`/product/${product.id}`}>{product.name}</Link>
                       </h4>
-                      <p className="text-[#FFA259] font-bold text-lg md:text-xl mt-auto m-0">
+                      <p className="text-[#FFA259] font-bold text-xl mt-auto m-0">
                         ৳{product.price}
                       </p>
                     </div>
                   </div>
-                ))}
-            </div>
-
-            <button 
-              onClick={scrollRight}
-              className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-50 text-gray-800 shadow-md border border-gray-100 rounded-full w-11 h-11 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
-              style={{ cursor: "pointer" }}
-              aria-label="Next products"
-            >
-              <i className="fa fa-chevron-right text-xs text-gray-500"></i>
-            </button>
-          </div>
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
       </section>
 
@@ -545,7 +553,7 @@ const LandingPage = () => {
 
           {/* Products Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-            {products.filter(p => [50, 63, 61, 40].includes(p.id)).map((product) => (
+            {products.filter(p => [64, 63, 61, 72].includes(p.id)).map((product) => (
               <div
                 key={product.id}
                 className="bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-400 hover:-translate-y-1 group"
@@ -637,163 +645,268 @@ const LandingPage = () => {
       </section>
 
       {/* 3.8. WHY CHOOSE US */}
-      <section className="py-24 bg-white relative" id="why-us">
+      <section className="py-24 bg-white relative overflow-hidden" id="why-us">
         <div className="container">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#00A186] font-extrabold bg-[#00A186]/10 px-4 py-2 rounded-full inline-block mb-4">
-              Our Promise
-            </span>
-            <h2 className="font-playfair font-extrabold text-[#1a1a1a] mt-3" style={{ fontSize: "38px" }}>
-              Why Choose Kona Cafe?
-            </h2>
-            <div className="h-1 w-16 bg-[#00A186] mx-auto mt-4 rounded"></div>
-          </div>
+          <div className="row items-center gap-y-12">
 
-          {/* Value Columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
-            {[
-              {
-                icon: "🌿",
-                color: "#00A186",
-                title: "100% Fresh Ingredients",
-                desc: "We source our produce daily from local farms and trusted seafood suppliers, ensuring every bowl is bursting with nutrients and flavor."
-              },
-              {
-                icon: "⚡",
-                color: "#FFA259",
-                title: "Fast Delivery",
-                desc: "Your order delivered hot and fresh in under 45 minutes. We partner with the best logistics providers to ensure speed and care."
-              },
-              {
-                icon: "🏆",
-                color: "#E15C6C",
-                title: "Award-Winning Recipes",
-                desc: "Our signature dishes have won multiple Best Restaurant awards in Dhaka since 2019, recognized for authentic Hawaiian flavors."
-              },
-              {
-                icon: "💚",
-                color: "#1494C3",
-                title: "Healthy & Balanced",
-                desc: "Low-calorie, high-protein bowls crafted by our in-house nutritionist. We offer vegan, gluten-free, and dairy-free options too."
-              }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="group flex flex-col items-center text-center p-8 rounded-[24px] border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-400 hover:-translate-y-1"
-              >
+            {/* LEFT: Two stacked overlapping images */}
+            <div className="col-lg-5 col-md-6 flex justify-center mb-40 mb-md-0">
+              <div className="relative" style={{ width: "360px", height: "420px" }}>
+                {/* Back image (left, taller) */}
                 <div
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: `${item.color}12`, border: `2px solid ${item.color}20` }}
+                  className="absolute left-0 top-0 rounded-[28px] overflow-hidden shadow-lg"
+                  style={{ width: "190px", height: "380px" }}
                 >
-                  {item.icon}
+                  <img
+                    src="/assets/images/gallery-3.png"
+                    alt="Kona Cafe ambiance"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h4 className="font-playfair font-bold text-gray-900 text-lg mb-3">{item.title}</h4>
-                <p className="text-sm text-gray-400 font-light leading-relaxed">{item.desc}</p>
-                <div className="h-[3px] w-8 mt-5 rounded" style={{ backgroundColor: item.color }}></div>
+
+                {/* Front image (right, overlapping) */}
+                <div
+                  className="absolute right-0 bottom-0 rounded-[28px] overflow-hidden shadow-xl border-4 border-white"
+                  style={{ width: "210px", height: "340px" }}
+                >
+                  <img
+                    src="/assets/images/about-4.png"
+                    alt="Fresh food preparation"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Floating badge */}
+                <div
+                  className="absolute -bottom-4 left-6 bg-white rounded-2xl px-5 py-3 shadow-xl flex items-center gap-3 z-20 border border-gray-50"
+                  style={{ minWidth: "160px" }}
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#00A186]/10 flex items-center justify-center text-[#00A186] font-bold text-sm shrink-0">
+                    ✓
+                  </div>
+                  <div>
+                    <p className="text-[9px] uppercase tracking-wider text-gray-400 font-bold m-0">Since 2019</p>
+                    <p className="text-xs font-bold text-gray-900 m-0">Award Winner</p>
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* 3.9. CUSTOMER REVIEWS */}
-      <section className="py-24 bg-[#F8F8F8] relative overflow-hidden" id="reviews">
-        {/* Watermark leaf */}
-        <img
-          src="/assets/images/leaf.png"
-          alt=""
-          className="absolute -right-16 top-0 w-48 opacity-5 pointer-events-none"
-        />
-
-        <div className="container">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#FFA259] font-extrabold bg-[#FFA259]/10 px-4 py-2 rounded-full inline-block mb-4">
-              What Our Guests Say
-            </span>
-            <h2 className="font-playfair font-extrabold text-[#1a1a1a] mt-3" style={{ fontSize: "38px" }}>
-              Customer Reviews
-            </h2>
-            <div className="h-1 w-14 bg-[#FFA259] mx-auto mt-4 rounded"></div>
-          </div>
-
-          {/* Review Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-            {[
-              {
-                name: "Anika Rahman",
-                role: "Regular Customer",
-                avatar: "AR",
-                color: "#00A186",
-                rating: 5,
-                text: "Honestly the best Poke Bowl in Dhaka! The Hawaiian Bun Hotdog is insane – the sweetness of the bun with the grilled sausage is just perfect. I visit at least twice a week!",
-                dish: "Hawaiian Poke Bowl"
-              },
-              {
-                name: "Rafid Hossain",
-                role: "Food Blogger",
-                avatar: "RH",
-                color: "#E15C6C",
-                rating: 5,
-                text: "I've reviewed over 200 restaurants in Dhaka, and Kona Cafe stands out for its freshness and authenticity. The Lychee Boba Tea is handcrafted perfection. Highly recommended!",
-                dish: "Lychee Rose Boba Tea"
-              },
-              {
-                name: "Samia Tasnim",
-                role: "Loyal Member",
-                avatar: "ST",
-                color: "#FFA259",
-                rating: 5,
-                text: "The Bibimbap here reminds me of my trip to Seoul! The kimchi side, the runny egg, the marinated beef – it's all cooked just right. The Banani shack has great ambiance too.",
-                dish: "Korean Bibimbap Bowl"
-              }
-            ].map((review, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-[24px] p-8 border border-gray-100 hover:shadow-xl transition-all duration-400 hover:-translate-y-1 relative"
-              >
-                {/* Large quote mark */}
-                <span className="absolute top-6 right-8 text-6xl font-serif leading-none opacity-10 select-none" style={{ color: review.color }}>
-                  "
+            {/* RIGHT: Text + checklist */}
+            <div className="col-lg-7 col-md-6 pl-xl-50">
+              <div className="space-y-6">
+                {/* Label */}
+                <span
+                  className="font-playfair italic font-bold text-xl"
+                  style={{ color: "#00A186" }}
+                >
+                  Kona Cafe
                 </span>
 
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(review.rating)].map((_, s) => (
-                    <span key={s} className="text-[#FFA259] text-sm">★</span>
+                {/* Heading */}
+                <h2
+                  className="font-playfair font-extrabold text-[#1a1a1a] leading-tight mt-2"
+                  style={{ fontSize: "40px" }}
+                >
+                  Why Choose Kona Cafe?
+                </h2>
+
+                <p className="text-gray-500 font-light text-sm leading-relaxed" style={{ maxWidth: "500px" }}>
+                  We bring authentic Hawaiian and Korean flavors to Dhaka with the finest fresh ingredients, prepared daily for a wholesome experience you'll love.
+                </p>
+
+                {/* Checklist */}
+                <div className="flex flex-col gap-6 pt-4">
+                  {[
+                    {
+                      title: "100% Fresh Ingredients",
+                      desc: "We source produce daily from local farms and trusted suppliers, ensuring every bowl bursts with nutrients and natural flavor."
+                    },
+                    {
+                      title: "Fast & Reliable Delivery",
+                      desc: "Hot, fresh meals delivered in under 45 minutes. We partner with top logistics providers so your food arrives perfect."
+                    },
+                    {
+                      title: "Award-Winning Recipes",
+                      desc: "Our signature dishes have won multiple Best Restaurant awards in Dhaka since 2019, celebrated for their authentic Hawaiian taste."
+                    },
+                    {
+                      title: "Healthy & Balanced Options",
+                      desc: "Low-calorie, high-protein bowls with vegan, gluten-free, and dairy-free choices, crafted by our in-house nutritionist."
+                    }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4 group">
+                      {/* Checkmark */}
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                        style={{ backgroundColor: "#FFA259" }}
+                      >
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                          <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-gray-900 text-base mb-1">{item.title}</h5>
+                        <p className="text-sm text-gray-400 font-light leading-relaxed m-0">{item.desc}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
 
-                {/* Review text */}
-                <p className="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                  "{review.text}"
-                </p>
-
-                {/* Dish tag */}
-                <span
-                  className="text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-5 inline-block"
-                  style={{ backgroundColor: `${review.color}15`, color: review.color }}
-                >
-                  Ordered: {review.dish}
-                </span>
-
-                {/* Reviewer info */}
-                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-50">
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
-                    style={{ backgroundColor: review.color }}
+                {/* CTA */}
+                <div className="pt-6">
+                  <Link
+                    to="/menu"
+                    className="bttn-mid btn-fill"
+                    style={{
+                      background: "linear-gradient(135deg, #00A186 0%, #00C9B7 100%)",
+                      boxShadow: "0 8px 20px rgba(0, 161, 134, 0.25)"
+                    }}
                   >
-                    {review.avatar}
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900 text-sm m-0">{review.name}</p>
-                    <p className="text-xs text-gray-400 font-light m-0">{review.role}</p>
-                  </div>
+                    Explore Our Menu &nbsp; →
+                  </Link>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* 3.9. CUSTOMER REVIEWS — Arc Photo Testimonial */}
+      <section className="py-24 bg-white relative overflow-hidden" id="reviews">
+        {/* Subtle bg decoration */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+          <div className="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-[#FFA259]/5" />
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-[#00A186]/5" />
+        </div>
+
+        <div className="container relative z-10">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="font-playfair font-extrabold text-[#1a1a1a] leading-tight" style={{ fontSize: "clamp(28px, 4vw, 42px)" }}>
+              What Clients Say<br />About Our Coffee
+            </h2>
           </div>
+
+          {/* Arc Photos */}
+          {(() => {
+            const clients = [
+              {
+                name: "Anika Rahman",
+                photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=300&fit=crop&crop=face",
+                text: "I've tried many different types of coffee over the years, but this particular brand has truly captivated my senses. From the moment I opened the bag, the aroma was unlike anything I'd experienced before!"
+              },
+              {
+                name: "Fatima Khan",
+                photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+                text: "The Lychee Rose Boba Tea is absolutely divine — floral, sweet, and perfectly balanced. I come here every weekend just for that drink alone. The vibe and ambiance is amazing too!"
+              },
+              {
+                name: "Sarah Thompson",
+                photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face",
+                text: "I've tried many different types of coffee over the years, but this particular brand has truly captivated my senses. From the moment I opened the bag, the rich aroma was unlike anything I'd experienced before!"
+              },
+              {
+                name: "James Lee",
+                photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+                text: "The Korean Bibimbap Bowl is authentic and incredibly fresh. It reminds me of eating in Seoul — every ingredient is perfectly seasoned and balanced. Absolutely the best in Dhaka!"
+              },
+              {
+                name: "Marcus Chen",
+                photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+                text: "Kona Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
+              }
+            ];
+            const total = clients.length;
+            const prev = () => setActiveReview((p) => (p - 1 + total) % total);
+            const next = () => setActiveReview((p) => (p + 1) % total);
+
+            // Arc: center = biggest + lowest. Sides = smaller + higher (negative translateY)
+            const arcConfigs = [
+              { size: 210, translateY:   0, opacity: 1,    zIndex: 10, shadow: "0 20px 60px rgba(0,0,0,0.20)" }, // center
+              { size: 148, translateY: -50, opacity: 0.90, zIndex: 8,  shadow: "0 8px 24px rgba(0,0,0,0.12)"  }, // ±1
+              { size: 100, translateY: -90, opacity: 0.65, zIndex: 6,  shadow: "0 4px 12px rgba(0,0,0,0.08)"  }, // ±2
+            ];
+
+            const getConfig = (idx) => {
+              const dist = Math.abs(idx - activeReview);
+              const d = Math.min(dist, total - dist);
+              return arcConfigs[Math.min(d, arcConfigs.length - 1)];
+            };
+
+            return (
+              <>
+                {/* Photos arc — center lowest, sides rise up */}
+                <div
+                  className="flex items-end justify-center mb-10"
+                  style={{ gap: "20px", minHeight: "240px", overflow: "visible" }}
+                >
+                  {clients.map((client, idx) => {
+                    const cfg = getConfig(idx);
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveReview(idx)}
+                        className="relative rounded-full overflow-hidden shrink-0 focus:outline-none cursor-pointer"
+                        style={{
+                          width:     `${cfg.size}px`,
+                          height:    `${cfg.size}px`,
+                          minWidth:  `${cfg.size}px`,
+                          opacity:   cfg.opacity,
+                          zIndex:    cfg.zIndex,
+                          transform: `translateY(${cfg.translateY}px)`,
+                          boxShadow: cfg.shadow,
+                          border:    "3px solid #fff",
+                          transition: "all 0.5s cubic-bezier(0.4,0,0.2,1)",
+                        }}
+                      >
+                        <img
+                          src={client.photo}
+                          alt={client.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Name + review text */}
+                <div className="text-center max-w-md mx-auto">
+                  <p className="font-bold text-[#1a1a1a] mb-3" style={{ fontSize: "16px" }}>
+                    {clients[activeReview].name}
+                  </p>
+                  <p className="text-gray-500 font-light leading-relaxed" style={{ fontSize: "14px" }}>
+                    {clients[activeReview].text}
+                  </p>
+
+                  {/* ← → Arrows — teal outline matching screenshot */}
+                  <div className="flex justify-center items-center gap-5 mt-8">
+                    <button
+                      onClick={prev}
+                      className="flex items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95"
+                      style={{
+                        width: "40px", height: "40px",
+                        border: "2px solid #00A186",
+                        color: "#00A186",
+                        background: "transparent",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                      }}
+                    >←</button>
+                    <button
+                      onClick={next}
+                      className="flex items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95"
+                      style={{
+                        width: "40px", height: "40px",
+                        border: "2px solid #00A186",
+                        color: "#00A186",
+                        background: "transparent",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                      }}
+                    >→</button>
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </div>
       </section>
 
