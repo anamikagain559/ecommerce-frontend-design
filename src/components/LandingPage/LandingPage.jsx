@@ -645,45 +645,43 @@ const LandingPage = () => {
       {/* 3.8. WHY CHOOSE US */}
       <section className="py-24 bg-[#FAFAFA] relative overflow-hidden" id="why-us">
         <div className="container">
-          <div className="row items-center gap-y-16">
+          <div className="row items-center gap-y-12">
 
-            {/* LEFT: Elevated overlapping images (অর্ধেক জায়গা নেবে: col-lg-6) */}
+            {/* LEFT: Elevated overlapping images */}
             <div className="col-lg-6 col-md-6 flex justify-center mb-12 md:mb-0">
-              {/* কন্টেইনারের width 480px থেকে বাড়িয়ে 560px এবং height 600px করা হয়েছে */}
-              <div className="relative group cursor-pointer max-w-full" style={{ width: "560px", height: "600px" }}>
 
-                {/* Decorative background glow */}
+              <div className="relative group cursor-pointer w-full max-w-[640px]" style={{ height: "560px" }}>
+
+
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00A186] rounded-full mix-blend-multiply filter blur-3xl opacity-10 transition-opacity duration-500 group-hover:opacity-20" />
 
-                {/* Back image (left, taller) - Width 280px থেকে 340px করা হয়েছে */}
                 <div
                   className="absolute left-0 top-0 rounded-[2rem] overflow-hidden shadow-lg transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl"
-                  style={{ width: "340px", height: "520px" }}
+                  style={{ width: "320px", height: "480px" }}
                 >
                   <img
-                    src="/assets/images/gallery-3.png"
+                    src="https://i.ibb.co.com/SKVycfL/00-holding-chefs-table.webp"
                     alt="Kona Cafe ambiance"
                     className="w-full h-full object-cover"
                   />
-                  {/* Subtle dark overlay for depth */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Front image (right, overlapping) - Width 300px থেকে 380px করা হয়েছে */}
+                {/* Front image (right, overlapping) - Width 360px করা হয়েছে এবং একেবারে ডানে সরানো হয়েছে */}
                 <div
                   className="absolute right-0 bottom-0 rounded-[2rem] overflow-hidden shadow-xl border-[8px] border-[#FAFAFA] transition-transform duration-500 group-hover:translate-y-2 group-hover:shadow-2xl z-10"
-                  style={{ width: "380px", height: "460px" }}
+                  style={{ width: "360px", height: "480px" }}
                 >
                   <img
-                    src="/assets/images/about-4.png"
+                    src="https://i.ibb.co.com/nq1CgR1W/restaurant-decoration.jpg"
                     alt="Fresh food preparation"
                     className="w-full h-full object-cover"
                   />
                 </div>
 
-                {/* Floating badge - Glassmorphism style */}
+                {/* Floating badge */}
                 <div
-                  className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md rounded-2xl px-6 py-4 shadow-xl flex items-center gap-4 z-20 border border-white/50 transition-all duration-300 hover:scale-105"
+                  className="absolute bottom-6 left-2 sm:left-8 bg-white/90 backdrop-blur-md rounded-2xl px-6 py-4 shadow-xl flex items-center gap-4 z-20 border border-white/50 transition-all duration-300 hover:scale-105"
                   style={{ minWidth: "200px" }}
                 >
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00A186] to-[#00C9B7] flex items-center justify-center text-white font-bold text-xl shrink-0 shadow-md shadow-[#00A186]/30">
@@ -699,7 +697,7 @@ const LandingPage = () => {
 
             {/* RIGHT: Text + Interactive checklist */}
             <div className="col-lg-6 col-md-6 lg:pl-16">
-              <div className="space-y-7">
+              <div className="space-y-6">
 
                 {/* Headers */}
                 <div>
@@ -708,39 +706,39 @@ const LandingPage = () => {
                   </span>
 
                   <h2
-                    className="font-playfair font-extrabold text-[#1a1a1a] leading-tight mt-3 mb-4"
+                    className="font-playfair font-extrabold text-[#1a1a1a] leading-tight mt-2 mb-3"
                     style={{ fontSize: "clamp(32px, 4vw, 44px)" }}
                   >
                     Why Choose Us?
                   </h2>
 
-                  <p className="text-gray-500 font-light text-base leading-relaxed max-w-lg">
-                    We bring authentic Hawaiian and Korean flavors to Dhaka with the finest fresh ingredients, prepared daily for a wholesome experience you'll love.
+                  <p className="text-gray-500 font-light text-base leading-relaxed max-w-md">
+                    Bringing authentic Hawaiian and Korean flavors to Dhaka with fresh, daily-prepared ingredients for a wholesome experience.
                   </p>
                 </div>
 
                 {/* Checklist */}
-                <div className="flex flex-col gap-5 pt-2">
+                <div className="flex flex-col gap-4 pt-2">
                   {[
                     {
                       title: "100% Fresh Ingredients",
-                      desc: "We source produce daily from local farms and trusted suppliers, ensuring every bowl bursts with nutrients and natural flavor."
+                      desc: "Daily sourced produce from local farms ensuring nutrient-rich and flavorful bowls."
                     },
                     {
                       title: "Fast & Reliable Delivery",
-                      desc: "Hot, fresh meals delivered in under 45 minutes. We partner with top logistics providers so your food arrives perfect."
+                      desc: "Hot, fresh meals delivered in under 45 minutes for a perfect dining experience."
                     },
                     {
                       title: "Award-Winning Recipes",
-                      desc: "Our signature dishes have won multiple Best Restaurant awards in Dhaka since 2019, celebrated for their authentic Hawaiian taste."
+                      desc: "Multi-award-winning signature dishes celebrated for their authentic Hawaiian taste."
                     },
                     {
                       title: "Healthy & Balanced Options",
-                      desc: "Low-calorie, high-protein bowls with vegan, gluten-free, and dairy-free choices, crafted by our in-house nutritionist."
+                      desc: "High-protein, vegan, and gluten-free choices crafted by our in-house nutritionist."
                     }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 group p-3 -ml-3 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 cursor-default">
-                      {/* Checkmark with glow on hover */}
+                    <div key={i} className="flex items-start gap-4 group p-2 -ml-2 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 cursor-default">
+                      {/* Checkmark */}
                       <div
                         className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm shadow-[#FFA259]/20 group-hover:shadow-md group-hover:shadow-[#FFA259]/40"
                         style={{ backgroundColor: "#FFA259" }}
@@ -750,7 +748,7 @@ const LandingPage = () => {
                         </svg>
                       </div>
                       <div>
-                        <h5 className="font-bold text-gray-800 text-base mb-1.5 transition-colors duration-300 group-hover:text-[#00A186]">
+                        <h5 className="font-bold text-gray-800 text-base mb-1 transition-colors duration-300 group-hover:text-[#00A186]">
                           {item.title}
                         </h5>
                         <p className="text-sm text-gray-500 font-light leading-relaxed m-0 group-hover:text-gray-600">
@@ -778,10 +776,10 @@ const LandingPage = () => {
                   </Link>
                 </div>
 
-              </div> {/* Closes .space-y-7 */}
-            </div> {/* Closes .col-lg-6 */}
-          </div> {/* Closes .row */}
-        </div> {/* Closes .container */}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       {/* 3.9. CUSTOMER REVIEWS — Arc Photo Testimonial */}
       <section className="py-24 bg-white relative overflow-hidden" id="reviews">
@@ -807,11 +805,7 @@ const LandingPage = () => {
                 </svg>
               </div>
 
-              {/* Subtitle Label */}
-              <span
-                className="block font-medium text-lg mb-2"
-                style={{ color: "#00A186", fontFamily: "cursive, sans-serif" }}
-              >
+              <span className="font-playfair italic font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A186] to-[#00C9B7]">
                 Testimonials
               </span>
 
