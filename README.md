@@ -1,6 +1,6 @@
-# Kona Cafe &mdash; Hawaiian Inspired Cuisines E-Commerce
+# Cove Cafe &mdash; Hawaiian Inspired Cuisines E-Commerce
 
-A modern, responsive, and fully operational React.js e-commerce application cloned from the design and layout of the original PHP-based **Kona Cafe** website (located at `H:\Dell PC\drawhouse pc`). Built using Vite, React Router, and the original CSS/assets of the reference site, ensuring a pixel-perfect replica of the branding, product categories, and checkout procedures.
+A modern, responsive, and fully operational React.js e-commerce application cloned from the design and layout of the original PHP-based **Cove Cafe** website (located at `H:\Dell PC\drawhouse pc`). Built using Vite, React Router, and the original CSS/assets of the reference site, ensuring a pixel-perfect replica of the branding, product categories, and checkout procedures.
 
 ---
 
@@ -42,7 +42,7 @@ A modern, responsive, and fully operational React.js e-commerce application clon
 - **Navigation**: React Router DOM (v6)
 - **Icons**: React Icons (Feather Icons & Font Awesome)
 - **Modals**: SweetAlert2
-- **Styling**: Reference Bootstrap & Kona Cafe `main.css` loaded dynamically in `index.html`
+- **Styling**: Reference Bootstrap & Cove Cafe `main.css` loaded dynamically in `index.html`
 
 ---
 

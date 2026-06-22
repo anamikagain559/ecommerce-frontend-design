@@ -118,7 +118,7 @@ const Cart = () => {
                           <td style={{ padding: "15px 0" }}>
                             <div className="flex items-center gap-3">
                               <img
-                                src={`/erp/images/${item.photo}`}
+                                src={`${item.photo}`}
                                 alt={item.name}
                                 style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "8px" }}
                               />

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { products } from "../mockData";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,17 @@ import "swiper/css/pagination";
 
 const BestSellingCarousel = () => {
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  React.useEffect(() => {
+    if (swiperInstance && prevRef.current && nextRef.current) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
+    }
+  }, [swiperInstance]);
 
   return (
     <section className="py-16 bg-[#F8F8F8] relative" id="best-selling">
@@ -50,7 +61,7 @@ const BestSellingCarousel = () => {
             {/* Custom Navigation Arrows */}
             <div className="flex items-center gap-2">
               <button
-                onClick={() => swiperInstance?.slidePrev()}
+                ref={prevRef}
                 className="h-11 w-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#FFA259] hover:text-white hover:border-[#FFA259] transition-all duration-300 shadow-sm cursor-pointer"
                 aria-label="Previous slide"
               >
@@ -59,7 +70,7 @@ const BestSellingCarousel = () => {
                 </svg>
               </button>
               <button
-                onClick={() => swiperInstance?.slideNext()}
+                ref={nextRef}
                 className="h-11 w-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#FFA259] hover:text-white hover:border-[#FFA259] transition-all duration-300 shadow-sm cursor-pointer"
                 aria-label="Next slide"
               >
@@ -78,6 +89,7 @@ const BestSellingCarousel = () => {
           slidesPerView={1}
           centeredSlides={false}
           onSwiper={(swiper) => setSwiperInstance(swiper)}
+          // navigation is set via useEffect after refs are available
           pagination={{ clickable: true }}
           loop={true}
           breakpoints={{
