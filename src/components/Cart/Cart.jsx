@@ -117,7 +117,7 @@ const Cart = () => {
                     <form onSubmit={handleCouponSubmit} className="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
                       <input
                         type="text"
-                        placeholder="PROMO CODE (e.g. KONA20)"
+                        placeholder="PROMO CODE (e.g. COVE20)"
                         value={promoInput}
                         onChange={(e) => setPromoInput(e.target.value)}
                         className="px-4 py-2 text-xs uppercase font-semibold text-black placeholder-gray-400 focus:outline-none"

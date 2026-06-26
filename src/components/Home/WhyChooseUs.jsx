@@ -21,7 +21,7 @@ const WhyChooseUs = () => {
               >
                 <img
                   src="https://i.ibb.co.com/SKVycfL/00-holding-chefs-table.webp"
-                  alt="Kona Cafe ambiance"
+                  alt="Cove Cafe ambiance"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
               {/* Headers */}
               <div>
                 <span className="font-playfair italic font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A186] to-[#00C9B7]">
-                  The Kona Cafe Experience
+                  The Cove Cafe Experience
                 </span>
 
                 <h2

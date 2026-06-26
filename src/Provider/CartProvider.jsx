@@ -4,7 +4,7 @@ const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
-    const localData = localStorage.getItem("kona_cart");
+    const localData = localStorage.getItem("cove_cart");
     return localData ? JSON.parse(localData) : [];
   });
 
@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
   const [discountPercentage, setDiscountPercentage] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem("kona_cart", JSON.stringify(cart));
+    localStorage.setItem("cove_cart", JSON.stringify(cart));
   }, [cart]);
 
   // Generates a unique key for cart item based on product ID, selected size, chosen option, and addons
@@ -85,7 +85,7 @@ export const CartProvider = ({ children }) => {
 
   const applyPromo = (code) => {
     const formattedCode = code.toUpperCase().trim();
-    if (formattedCode === "KONA20") {
+    if (formattedCode === "Cove") {
       setPromoCode(formattedCode);
       setDiscountPercentage(20); // 20% discount
       return { success: true, message: "20% discount applied successfully!" };
@@ -104,12 +104,12 @@ export const CartProvider = ({ children }) => {
 
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const discountAmount = (subtotal * discountPercentage) / 100;
-  
+
   // Service charge and VAT calculations (10% Service Charge, 5% VAT typical in BD restaurants)
   const serviceCharge = Math.round((subtotal - discountAmount) * 0.10);
   const vat = Math.round((subtotal - discountAmount) * 0.05);
   const deliveryCost = subtotal > 0 ? 60 : 0; // Flat 60 Taka delivery charge in Dhaka
-  
+
   const grandTotal = subtotal - discountAmount + serviceCharge + vat + deliveryCost;
 
   return (

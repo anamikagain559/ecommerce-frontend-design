@@ -27,7 +27,7 @@ Built using Vite, React Router, and the original CSS/assets of the reference sit
 
 5. **Shopping Cart Page (`/cart`)**
    - **Detailed Table Layout**: Summarizes custom choices, quantities, and line item costs.
-   - **Live Promotional Codes**: Validates code applications (`KONA20` for 20% off, `ALOHA15` for 15% off) with real-time recalculations.
+   - **Live Promotional Codes**: Validates code applications (`COVE20` for 20% off, `ALOHA15` for 15% off) with real-time recalculations.
 
 6. **Acquisition Checkout (`/checkout`)**
    - **Delivery Address validation**: Contact info, city dropdown, and address fields.

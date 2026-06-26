@@ -44,7 +44,7 @@ const Checkout = () => {
       title: "Order Placed Successfully!",
       html: `
         <div class="text-left space-y-3 mt-10 text-sm text-gray-700" style="font-family: 'Poppins', sans-serif;">
-          <p>Your order has been received by Kona Cafe. Our kitchen is starting to prepare your meal!</p>
+          <p>Your order has been received by Cove Cafe. Our kitchen is starting to prepare your meal!</p>
           <div class="bg-gray-100 p-15 rounded border border-gray-200 space-y-2 mt-10" style="border-radius: 8px;">
             <p><strong>Order ID:</strong> ${orderId}</p>
             <p><strong>Estimated Delivery:</strong> 35-45 Minutes</p>

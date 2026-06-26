@@ -8,7 +8,7 @@ const EventsPage = () => {
       <div className="custom-banner" style={{ minHeight: "180px", display: "flex", alignItems: "center" }}>
         <div className="container text-center pt-20">
           <h1 className="font-playfair font-extrabold text-white tracking-wider animate-slide-up" style={{ fontSize: "42px" }}>
-            Kona Cafe Happenings
+            Cove Cafe Happenings
           </h1>
           <p className="text-white opacity-85 text-sm uppercase tracking-widest mt-10">
             Join the Aloha Spirit &bull; Live Music, Boba Workshops & More

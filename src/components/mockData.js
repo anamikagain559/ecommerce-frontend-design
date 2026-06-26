@@ -117,7 +117,7 @@ export const products = [
       { id: "addon-jalapeno", name: "Pickled Jalapeños", price: 40, image: "Cucumber.webp" }
     ],
     optionTitle: "Sauce Option",
-    options: ["Garlic Sauce", "Spicy Tahini", "Kona Secret Sauce"]
+    options: ["Garlic Sauce", "Spicy Tahini", "Cove Secret Sauce"]
   },
   {
     id: 68,
@@ -135,11 +135,11 @@ export const products = [
   },
   {
     id: 70,
-    name: "Kona Volcanic Latte",
+    name: "Cove Volcanic Latte",
     category: "drinks-coffee",
     price: 250,
-    photo: "https://i.ibb.co.com/9kYqzYFq/Coffee-in-Kona-3-Cappuccinos.jpg",
-    description: "Our signature espresso shot pulled from 100% Kona volcanic-soil beans, topped with velvety steamed milk and a dusting of Hawaiian black lava salt for a bold, smooth finish.",
+    photo: "URL_PLACEHOLDER_COVE",
+    description: "Our signature espresso shot pulled from 100% Cove volcanic-soil beans, topped with velvety steamed milk and a dusting of Hawaiian black lava salt for a bold, smooth finish.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 250 },
       { id: "lrg", name: "Large Cup", price: 320 }
@@ -225,7 +225,7 @@ export const products = [
     category: "drinks-coffee",
     price: 240,
     photo: "https://i.ibb.co.com/7xbKTDph/spicy-cowgirl-coffee-1616524606.avif",
-    description: "A uniquely bold Kona-house iced coffee with creamy ranch-style butter foam, brewed from our signature single-origin Hawaiian bean blend, served over crushed ice.",
+    description: "A uniquely bold Cove-house iced coffee with creamy ranch-style butter foam, brewed from our signature single-origin Hawaiian bean blend, served over crushed ice.",
     sizes: [
       { id: "reg", name: "Regular Cup", price: 240 },
       { id: "lrg", name: "Large Cup", price: 300 }

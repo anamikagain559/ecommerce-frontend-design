@@ -10,7 +10,22 @@ const Footer = () => {
       className="footer-area relative overflow-hidden bg-white py-12 border-t border-gray-100 text-center flex flex-col items-center justify-center"
       style={{ minHeight: "280px" }}
     >
-      {/* Background Watermark Theme Decorations Removed */}
+      {/* Coffee-themed Decorations */}
+      {/* Coffee-themed Decorations */}
+      {/* Coffee-themed Decorations */}
+      {/* Left side Coffee image blended seamlessly, partially peeking in */}
+      <div className="absolute -left-16 md:-left-24 -bottom-16 md:-bottom-24 opacity-[0.8] pointer-events-none transform -rotate-12 hover:rotate-0 transition-transform duration-700 z-0">
+        <img 
+          src="/assets/images/latte_beans.png" 
+          alt="Coffee Latte" 
+          className="w-64 md:w-80 h-64 md:h-80 object-cover"
+          style={{ 
+            mixBlendMode: "multiply", 
+            WebkitMaskImage: "radial-gradient(circle closest-side, black 85%, transparent 100%)",
+            maskImage: "radial-gradient(circle closest-side, black 85%, transparent 100%)"
+          }}
+        />
+      </div>
 
       <div className="container relative z-10 flex flex-col items-center space-y-6">
         {/* 1. Center Brand Logo */}

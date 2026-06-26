@@ -10,7 +10,7 @@ const AboutArea = () => {
             <div className="banner-img relative inline-block group">
               <div className="absolute inset-0 bg-[#00A186]/5 rounded-3xl blur scale-105 pointer-events-none"></div>
               <img
-                src="/assets/images/about.png"
+                src="/assets/images/about-3.png"
                 alt="Animal Fries and Hot Dogs"
                 className="img-fluid rounded-3xl relative z-10 transform transition-transform duration-700 group-hover:scale-102"
                 style={{ borderRadius: "24px", filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.06))" }}

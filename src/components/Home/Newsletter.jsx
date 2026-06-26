@@ -61,7 +61,7 @@ const Newsletter = () => {
                   // SweetAlert customized to match the theme
                   Swal.fire({
                     title: "You're Subscribed! 🎉",
-                    text: "Welcome to the Kona family! Check your inbox for your 15% discount code.",
+                    text: "Welcome to the Cove family! Check your inbox for your 15% discount code.",
                     icon: "success",
                     confirmButtonColor: "#00A186", // Teal Theme Color
                     background: "#ffffff",

@@ -31,9 +31,9 @@ const CategoryShowcase = () => {
                   give you a lift.
                 </p>
 
-                {/* Kona Story Blockquote */}
+                {/* Cove Story Blockquote */}
                 <div className="border-l-4 border-[#E15C6C] pl-4 py-1 my-4 italic text-gray-600 font-light text-sm" style={{ lineHeight: "1.6em" }}>
-                  “The name “Kona” pays homage to the beans cultivated on the slopes of Hualalai and Mauna Loa volcanoes in the Kona districts of Hawaii.”
+                  “The name “Cove” pays homage to the beans cultivated on the slopes of Hualalai and Mauna Loa volcanoes in the Cove districts of Hawaii.”
                 </div>
 
                 {/* Elegant feature list highlights */}
@@ -270,7 +270,7 @@ const CategoryShowcase = () => {
                 Get <span className="text-yellow-200">20% OFF</span> Your First Order!
               </h2>
               <p className="text-white/80 font-light text-base max-w-md">
-                Use code <strong className="bg-white/20 px-3 py-1 rounded-lg font-extrabold tracking-wider">KONA20</strong> at checkout. Valid for all dine-in and delivery orders this week.
+                Use code <strong className="bg-white/20 px-3 py-1 rounded-lg font-extrabold tracking-wider">COVE20</strong> at checkout. Valid for all dine-in and delivery orders this week.
               </p>
             </div>
 

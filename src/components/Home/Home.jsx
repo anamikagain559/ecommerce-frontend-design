@@ -13,7 +13,7 @@ import FindOurShacks from "./FindOurShacks";
 const Home = () => {
   // Popup modal on load
   useEffect(() => {
-    const shown = sessionStorage.getItem("kona_popup_shown");
+    const shown = sessionStorage.getItem("cove_popup_shown");
     if (!shown) {
       setTimeout(() => {
         Swal.fire({
@@ -38,13 +38,13 @@ const Home = () => {
           if (result.value) {
             Swal.fire({
               title: "Welcome aboard!",
-              text: "Thank you for subscribing to Kona Cafe updates.",
+              text: "Thank you for subscribing to Cove Cafe updates.",
               icon: "success",
               confirmButtonColor: "#FFA259",
             });
           }
         });
-        sessionStorage.setItem("kona_popup_shown", "true");
+        sessionStorage.setItem("cove_popup_shown", "true");
       }, 2000);
     }
   }, []);

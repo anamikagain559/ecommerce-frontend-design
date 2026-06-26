@@ -63,7 +63,7 @@ const CustomerReviews = () => {
               {
                 name: "Marcus Chen",
                 photo: "https://i.ibb.co.com/D7m5m7x/person-6.jpg",
-                text: "Kona Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
+                text: "Cove Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
               }
             ];
             const total = clients.length;
