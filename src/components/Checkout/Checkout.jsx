@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../Provider/CartProvider";
 import Swal from "sweetalert2";
+import CheckoutItemCard from "./CheckoutItemCard";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -65,15 +66,15 @@ const Checkout = () => {
 
   return (
     <div className="page-wrapper bg-[#F8F8F8]">
-      {/* Custom Banner */}
-      <div className="custom-banner leaf flower" style={{ minHeight: "150px" }}>
+      {/* Header Banner */}
+      <div className="custom-banner" style={{ minHeight: "150px" }}>
         <div className="container">
           <div className="row"></div>
         </div>
       </div>
 
-      {/* Checkout Section */}
-      <section className="section-padding leaf-bottom text-left">
+      {/* Main Checkout Area */}
+      <section className="section-padding text-left">
         <div className="container">
           {/* Title */}
           <div className="row mb-30">
@@ -255,26 +256,19 @@ const Checkout = () => {
 
             {/* Order Summary sidebar (4 columns) */}
             <div className="col-lg-4 mt-40 mt-lg-0">
-              <div
-                className="bg-white p-30 rounded shadow-sm border border-gray-100 space-y-6"
-                style={{ borderRadius: "12px", borderTop: "4px solid #FFA259" }}
-              >
+                <div
+                  className="bg-white bg-opacity-80 backdrop-blur-md rounded-xl shadow-lg p-6 space-y-4"
+                >
                 <h4 className="font-playfair font-bold text-center border-b pb-15 mb-20" style={{ fontSize: "22px" }}>
                   Acquisition Summary
                 </h4>
 
                 {/* Items listing */}
-                <div className="order-summary-items-list mb-20" style={{ maxHeight: "250px", overflowY: "auto" }}>
-                  {cart.map((item) => (
-                    <div key={item.id} className="flex justify-between items-center py-10" style={{ borderBottom: "1px solid #f2f2f2" }}>
-                      <div className="text-left">
-                        <span className="font-bold text-sm block" style={{ color: "#333" }}>{item.name}</span>
-                        <span className="text-xs text-muted block">Size: {item.selectedSize.name} &bull; Qty: {item.quantity}</span>
-                      </div>
-                      <span className="font-bold text-sm">৳{(item.price * item.quantity).toLocaleString()}</span>
-                    </div>
-                  ))}
-                </div>
+                  <div className="grid grid-cols-1 gap-4 mb-6">
+                    {cart.map((item) => (
+                      <CheckoutItemCard key={item.id} item={item} />
+                    ))}
+                  </div>
 
                 <div className="space-y-4" style={{ fontSize: "14px", color: "#333" }}>
                   <div className="flex justify-between">
@@ -304,24 +298,20 @@ const Checkout = () => {
                     <span>৳{deliveryCost.toLocaleString()}</span>
                   </div>
 
-                  <div
-                    className="flex justify-between pt-15 font-bold cl-primary"
-                    style={{ borderTop: "2px solid #FFA259", fontSize: "18px" }}
-                  >
+                  <div className="flex justify-between pt-4 border-t border-gray-300 text-lg font-bold">
                     <span>Total Cost:</span>
                     <span>৳{grandTotal.toLocaleString()}</span>
                   </div>
                 </div>
 
-                <div className="pt-20">
-                  <button
-                    type="submit"
-                    className="w-full bttn-mid btn-fill text-center font-bold uppercase tracking-wider text-sm py-15"
-                    style={{ border: "none" }}
-                  >
-                    Place Order (৳{grandTotal})
-                  </button>
-                </div>
+                  <div className="pt-4">
+                    <button
+                      type="submit"
+                      className="w-full bg-[#FFA259] hover:bg-[#FF8C3A] text-white font-bold py-3 rounded transition-colors"
+                    >
+                      Place Order (৳{grandTotal})
+                    </button>
+                  </div>
               </div>
             </div>
           </form>

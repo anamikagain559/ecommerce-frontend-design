@@ -5,7 +5,7 @@ const EventsPage = () => {
   return (
     <div className="page-wrapper bg-[#F8F8F8]">
       {/* Custom Banner */}
-      <div className="custom-banner leaf flower" style={{ minHeight: "180px", display: "flex", alignItems: "center" }}>
+      <div className="custom-banner" style={{ minHeight: "180px", display: "flex", alignItems: "center" }}>
         <div className="container text-center pt-20">
           <h1 className="font-playfair font-extrabold text-white tracking-wider animate-slide-up" style={{ fontSize: "42px" }}>
             Kona Cafe Happenings
@@ -17,7 +17,7 @@ const EventsPage = () => {
       </div>
 
       {/* Events Listing */}
-      <section className="section-padding leaf-bottom">
+      <section className="section-padding">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">

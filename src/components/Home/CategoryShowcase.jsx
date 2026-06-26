@@ -10,19 +10,7 @@ const CategoryShowcase = () => {
         className="relative overflow-hidden my-16 md:my-24 mx-4 md:mx-12 lg:mx-20 rounded-[32px] md:rounded-[48px] shadow-md border border-[#FFA259]/10"
         style={{ backgroundColor: "#FAF2EC", height: "auto", minHeight: "auto" }}
       >
-        {/* Floating background decorative leaves */}
-        <img
-          src="/assets/images/leaf-left.png"
-          alt="deco-leaf"
-          className="absolute -left-10 top-1/4 w-32 opacity-25 animate-float pointer-events-none"
-          style={{ animationDuration: "8s" }}
-        />
-        <img
-          src="/assets/images/leaf-right.png"
-          alt="deco-leaf"
-          className="absolute -right-10 bottom-1/4 w-32 opacity-25 animate-float pointer-events-none"
-          style={{ animationDuration: "10s" }}
-        />
+        {/* Floating background decorative leaves removed */}
 
         <div className="container py-16 px-6 md:px-16 relative z-10">
           <div className="row items-center">

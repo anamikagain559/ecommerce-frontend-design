@@ -13,7 +13,12 @@ const BestSellingCarousel = () => {
   const nextRef = useRef(null);
 
   React.useEffect(() => {
-    if (swiperInstance && prevRef.current && nextRef.current) {
+    if (
+      swiperInstance &&
+      swiperInstance.navigation &&
+      prevRef.current &&
+      nextRef.current
+    ) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
       swiperInstance.params.navigation.nextEl = nextRef.current;
       swiperInstance.navigation.init();

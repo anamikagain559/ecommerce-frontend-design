@@ -10,33 +10,7 @@ const Footer = () => {
       className="footer-area relative overflow-hidden bg-white py-12 border-t border-gray-100 text-center flex flex-col items-center justify-center"
       style={{ minHeight: "280px" }}
     >
-      {/* Background Watermark Theme Decorations */}
-      {/* Left Corner: Faded Leaf Cluster */}
-      <img
-        src="/assets/images/leaf-left.png"
-        alt="deco-leaf"
-        className="absolute left-0 bottom-0 h-56 md:h-72 opacity-[0.45] pointer-events-none select-none"
-        style={{ transform: "rotate(-10deg) translate(-20px, 20px)" }}
-      />
-
-      {/* Right Corner: Faded Leaf + Flower Cluster */}
-      <div
-        className="absolute right-0 bottom-0 pointer-events-none select-none"
-        style={{ transform: "translate(20px, 20px)" }}
-      >
-        <img
-          src="/assets/images/leaf-right.png"
-          alt="deco-leaf"
-          className="h-56 md:h-72 opacity-[0.40] block"
-          style={{ transform: "rotate(10deg)" }}
-        />
-        <img
-          src="/assets/images/flower.png"
-          alt="deco-flower"
-          className="absolute right-12 bottom-12 h-28 md:h-36 opacity-[0.55] animate-spin"
-          style={{ animationDuration: "60s" }}
-        />
-      </div>
+      {/* Background Watermark Theme Decorations Removed */}
 
       <div className="container relative z-10 flex flex-col items-center space-y-6">
         {/* 1. Center Brand Logo */}
