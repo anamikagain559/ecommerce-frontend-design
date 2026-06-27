@@ -9,10 +9,12 @@ const AboutPage = () => {
       <div className="relative py-32 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/assets/images/gallery-1.png" 
+            src="/assets/images/about_hero.png" 
             alt="Cove Cafe Ambiance" 
-            className="w-full h-full object-cover filter brightness-[0.3]"
+            className="w-full h-full object-cover"
           />
+          {/* Subtle top gradient to ensure navbar readability */}
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80 to-transparent"></div>
         </div>
         <div className="container relative z-10 text-center px-4">
           <span className="text-[#FFA259] font-bold tracking-widest uppercase text-sm mb-4 block animate-fade-in-up">

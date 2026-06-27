@@ -12,10 +12,8 @@ const CustomerReviews = () => {
       </div>
 
       <div className="container relative z-10">
-        {/* Wrapper: padding-top বাড়ানো হয়েছে যাতে হেডিংয়ের জন্য পর্যাপ্ত জায়গা থাকে */}
+     
         <div className="relative w-full pt-20 mt-4">
-
-          {/* Header — হেডিংটিকে আগের চেয়ে ওপরে (-top-4) সেট করা হয়েছে এবং মাঝখানে ফিক্সড রাখা হয়েছে */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-full max-w-lg mx-auto text-center z-0 pointer-events-none px-4">
             {/* Decorative Coffee Beans */}
             <div className="absolute -top-10 left-0 md:-left-8 opacity-80 hidden sm:block">
@@ -63,14 +61,13 @@ const CustomerReviews = () => {
               {
                 name: "Marcus Chen",
                 photo: "https://i.ibb.co.com/D7m5m7x/person-6.jpg",
-                text: "Cove Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
+                text: "Kona Cafe is my go-to spot for remote work. Great WiFi, incredible Volcanic Latte, and the Tropical Salmon Poke Bowl keeps me fueled for hours. Absolutely love this place!"
               }
             ];
             const total = clients.length;
             const prev = () => setActiveReview((p) => (p - 1 + total) % total);
             const next = () => setActiveReview((p) => (p + 1) % total);
 
-            // কার্ভের ভ্যালু সামান্য কমানো হয়েছে যেন হেডিংয়ের সাথে ওভারল্যাপ না হয়
             const arcConfigs = [
               { size: 220, translateY: 0, opacity: 1, zIndex: 10, shadow: "0 20px 40px rgba(0,0,0,0.12)" }, // Center
               { size: 140, translateY: -90, opacity: 0.90, zIndex: 8, shadow: "0 10px 25px rgba(0,0,0,0.08)" }, // Inner Sides
@@ -85,7 +82,7 @@ const CustomerReviews = () => {
 
             return (
               <>
-                {/* Photos arc — Container height adjusted */}
+            
                 <div
                   className="flex items-end justify-center mb-10 relative z-10 pointer-events-auto"
                   style={{ gap: "clamp(1.5rem, 4vw, 4.5rem)", minHeight: "300px", overflow: "visible" }}
